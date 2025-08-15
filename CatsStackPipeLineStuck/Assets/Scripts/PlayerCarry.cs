@@ -14,6 +14,7 @@ public class PlayerCarry : MonoBehaviour
     [SerializeField] private float _throwForce;
     [SerializeField] private float _pickupRadius = 0.5f;
     [SerializeField] private LayerMask _carryableMask;
+    [SerializeField] private LayerMask _workStationMask;
     
     [Header("Read-Only Params")]
     [SerializeField, ReadOnly] private Vector2 _aimThrowInput;
@@ -24,12 +25,14 @@ public class PlayerCarry : MonoBehaviour
         if (ctx.started)
         {
             PickRelease();
+
         }
     }
     
     void PickRelease()
     {
         Collider2D carryableColllider = Physics2D.OverlapCircle(transform.position, _pickupRadius, _carryableMask);
+        Collider2D WorkStationCollider = Physics2D.OverlapCircle(transform.position, _pickupRadius, _workStationMask);
         if (!_isCarrying)//not carring
         {
             if (_carryable == null)//not carring
@@ -40,8 +43,11 @@ public class PlayerCarry : MonoBehaviour
                     _isCarrying = true; // If we found a carryable object, we are carrying it, otherwise not
                     _carryable?.AttachToParent(transform, _attachPos);//attach to parent if picked, detach if released
                 }
-                else
-                    Debug.LogWarning("No carryable object found in range or the object does not implement ICarryable interface.");
+                else if (WorkStationCollider != null && WorkStationCollider.TryGetComponent(out WorkStation station))
+                {
+
+                }
+                   // Debug.LogWarning("No carryable object found in range or the object does not implement ICarryable interface.")
             else Debug.Log("there is a carryable");
         }
         else if(_isCarrying)
@@ -54,6 +60,14 @@ public class PlayerCarry : MonoBehaviour
         }
         Debug.Log($"{(_isCarrying ? "picked" : "released")} an item!");
     }
+
+    void PickupFromStation(WorkStation station)
+    {
+
+    }
+
+    void InputIntoStation() { }
+
     public void Aim(InputAction.CallbackContext ctx)
     {
         if(ctx.started)
