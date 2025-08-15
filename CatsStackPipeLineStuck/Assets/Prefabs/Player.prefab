@@ -252,8 +252,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fd50af96b7b2a184797245f141f30057, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _moveSpeed: 6
   _rb: {fileID: 4587022553686255125}
+  _moveSpeed: 6
+  _deceleration: 6
+  _acceleration: 2
+  _stopEpsilon: 0.05
+  _flipDotThreshold: -0.2
+  _minMaxSpeed: {x: 3, y: 4}
+  _moveInput: {x: 0, y: 0}
+  _lastMoveInput: {x: 0, y: 1}
+  _currentVelocity: {x: 0, y: 0}
+  _touchedColliders: []
 --- !u!58 &3024912255162281321
 CircleCollider2D:
   m_ObjectHideFlags: 0

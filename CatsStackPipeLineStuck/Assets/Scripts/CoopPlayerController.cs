@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -14,10 +15,12 @@ public class CoopPlayerController : MonoBehaviour
     [SerializeField, Range(0f, 20f)] private float _acceleration = 10f;
     [SerializeField,Range(0, 0.1f)] private float _stopEpsilon = 0.05f;  // snap to 0 below this
     [SerializeField, Range(-1f, 1f)] private float _flipDotThreshold = -0.2f; // <= means “opposite enough”
-
+    [SerializeField] private Vector2 _minMaxSpeed;
     [SerializeField] private Vector2 _moveInput;
     [SerializeField] private Vector2 _lastMoveInput;
     [SerializeField] private Vector2 _currentVelocity = Vector3.zero; // Tracks current velocity
+
+    [SerializeField] private List<Collider2D> _touchedColliders = new List<Collider2D>();
     // Called automatically by PlayerInput (Send Messages) for "Move"
     void Update()
     {
@@ -34,19 +37,18 @@ public class CoopPlayerController : MonoBehaviour
     }
     private void Movement()
     {
-        Vector2 movementVector = _moveInput * _moveSpeed;
+        if(_touchedColliders.Count > 0)
+        {
+            // If touching a collider, stop moving
+            _currentVelocity = Vector2.zero;
+            return;
+        }
         if (_moveInput.magnitude > 0)
         {
-            if (_currentVelocity.sqrMagnitude > 0.0001f)
-            {
-                float dot = Vector2.Dot(_currentVelocity.normalized, _moveInput.normalized);
-                if (dot <= _flipDotThreshold)
-                {
-                    // Hard brake on flip so you don't “fight” old momentum
-                    _currentVelocity = Vector2.zero;
-                }
-            }
             _currentVelocity += _moveInput.normalized * _acceleration * Time.deltaTime;
+            float clampedMag = Mathf.Clamp(_currentVelocity.magnitude, _minMaxSpeed.x, _minMaxSpeed.y);
+            Vector2 desiredVel = _moveInput.normalized * clampedMag;
+            _currentVelocity = desiredVel;
         }
         else
         {
@@ -60,5 +62,21 @@ public class CoopPlayerController : MonoBehaviour
         transform.position += new Vector3(_currentVelocity.x, _currentVelocity.y) * Time.deltaTime;
         if(_moveInput != Vector2.zero)
             _lastMoveInput = _moveInput;
+    }
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        _currentVelocity = Vector2.zero;
+        Debug.Log("collided with wall");
+        _touchedColliders.Add(collision.collider);
+        Vector2 pushOutside = transform.position - collision.collider.transform.position;
+        _rb.AddForce(pushOutside.normalized * 0.1f, ForceMode2D.Impulse);
+
+    }
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        Debug.Log("out off wall");
+        _touchedColliders.Remove(collision.collider);
+        _rb.angularVelocity = 0f; // Reset angular velocity to prevent spinning
+        _rb.linearVelocity = Vector2.zero; // Reset linear velocity to stop movement
     }
 }
