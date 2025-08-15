@@ -13,4 +13,5 @@ MonoBehaviour:
   m_Name: CreateProjectFolders
   m_EditorClassIdentifier: 
   AssignmentName: create init folders
-  Sprite: {fileID: 0}
+  Sprite: {fileID: 21300000, guid: 9cef592e4011a3d4987b038081ac2e2a, type: 3}
+  assignmentType: 0
