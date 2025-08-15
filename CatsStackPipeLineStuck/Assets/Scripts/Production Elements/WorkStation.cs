@@ -1,21 +1,13 @@
 using UnityEngine;
 
-public class WorkStation : MonoBehaviour
+public class WorkStation : Station
 {
     [SerializeField] private StationType _stationType;
     [SerializeField] private ProductionStage _productionStage;
     [SerializeField] private float _interactionDur = 0;
     
 
-    public void OutputAssignment(PlayerCarry player)
-    {
 
-    }
-
-    public void InputAssignment()
-    {
-
-    }
     public enum StationType
     {
         Dev,
