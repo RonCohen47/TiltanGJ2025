@@ -62,7 +62,7 @@ public class ThrowableAssignment : MonoBehaviour, IThrowable
         Debug.Log("<color=green>attached to player</color>");
         _carryingParent = parent.GetComponent<PlayerCarry>();
         transform.SetParent(_carryingParent.transform, true);
-        transform.position = attachPosition.position;
+        transform.position = attachPosition.position; // Snap to the attach position
     }
 
     public void Detach()
