@@ -12,3 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5f26c2e3e3dbf84281147093e897d88, type: 3}
   m_Name: CreateNewScene
   m_EditorClassIdentifier: 
+  AssignmentName: create game scene
+  Sprite: {fileID: 0}

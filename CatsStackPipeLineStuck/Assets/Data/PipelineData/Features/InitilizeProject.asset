@@ -12,3 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d100c0108a6b2c643bcebe9f9e5516ff, type: 3}
   m_Name: InitilizeProject
   m_EditorClassIdentifier: 
+  featureName: init proj
+  requiredAssignments:
+  - {fileID: 11400000, guid: 3825e84162ee8044a8bc981134fbac1f, type: 2}
+  - {fileID: 11400000, guid: ee6eb5541e73fc84eba0630b454dd46c, type: 2}
+  - {fileID: 11400000, guid: f71d10c97013e834a9629294b341f134, type: 2}
+  dueTimeSeconds: 60

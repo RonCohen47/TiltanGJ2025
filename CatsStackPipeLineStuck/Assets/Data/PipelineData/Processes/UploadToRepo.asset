@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bdd03dec599b07246a3484e08dae0a01, type: 3}
+  m_Name: UploadToRepo
+  m_EditorClassIdentifier: 
+  InputAssignment: {fileID: 11400000, guid: fbf560b842be27e4781af027d387b0e0, type: 2}
+  OutputAssignment: {fileID: 11400000, guid: bb9a683ec78fa1547b16b6259b845dd3, type: 2}
+  TimeToComplete: 4
+  CanBurn: 1
+  BurnedOutputAssignment: {fileID: 11400000, guid: f082b935f6237794abf9b29ba3724243, type: 2}
+  BurnTime: 7
