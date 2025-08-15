@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D))]
@@ -13,7 +14,7 @@ public class ThrowableAssignment : MonoBehaviour, IThrowable
     public void BeginThrow()
     {
         // Detach from carry parent, enable physics
-        Detach();
+        _carryingParent.ClearCarryable();
     }
 
     public void Throw(Vector2 direction, float force)

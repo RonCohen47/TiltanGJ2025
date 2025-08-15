@@ -13,16 +13,17 @@ public class CoopPlayerController : MonoBehaviour
     [Header("Movement Settings")]
     [SerializeField] private float _moveSpeed = 6f;
     [SerializeField, Range(0,20)] float _deceleration = 6f; // How quickly the movement slows down
-    [SerializeField, Range(0f, 20f)] private float _acceleration = 10f;
-    [SerializeField,Range(0, 0.1f)] private float _stopEpsilon = 0.05f;  // snap to 0 below this
-    [SerializeField, Range(-1f, 1f)] private float _flipDotThreshold = -0.2f; // <= means “opposite enough”
+    [SerializeField, Range(0, 20)] private float _acceleration = 10f;
+    [SerializeField, Range(0, 0.1f)] private float _stopEpsilon = 0.05f;  // snap to 0 below this
+    [SerializeField, Range(-1, 1)] private float _flipDotThreshold = -0.2f; // <= means “opposite enough”
+    [SerializeField,Range(0, 1)] private float _ySpeedModifier;
     [SerializeField] private Vector2 _minMaxSpeed;
     [Header("Read-Only Params")]
     [SerializeField, ReadOnly] private Vector2 _moveInput;
     [SerializeField, ReadOnly] private Vector2 _lastMoveInput;
     [SerializeField, ReadOnly] private Vector2 _currentVelocity = Vector3.zero; // Tracks current velocity
     [SerializeField, ReadOnly] private List<Collider2D> _touchedColliders;//tracks colliders currently being touched by the player
-
+    public Vector2 ThrowDirection => _moveInput == Vector2.zero ? _lastMoveInput : _moveInput; // Use last input if current is zero
     void Update()
     {
         Movement();
@@ -64,30 +65,28 @@ public class CoopPlayerController : MonoBehaviour
                 _currentVelocity += -_lastMoveInput.normalized * _deceleration * Time.deltaTime;
         }
         // Apply velocity to position
-        transform.position += new Vector3(_currentVelocity.x, _currentVelocity.y) * Time.deltaTime;
+        transform.position += new Vector3(_currentVelocity.x, _currentVelocity.y * _ySpeedModifier) * Time.deltaTime;
         if(_moveInput != Vector2.zero)
             _lastMoveInput = _moveInput;
     }
 
     private void RotatePlayer()
     {
+        Vector3 newScaleRotated = transform.localScale;
         bool rotateLeft = _moveInput.x < 0f;
+        //is idle?
         if (_moveInput == Vector2.zero)
         {
-            rotateLeft = _lastMoveInput.x < 0f;
+            //has moved before?
+            if (_lastMoveInput != Vector2.zero)
+            {
+                rotateLeft = _lastMoveInput.x < 0f;
+                newScaleRotated.x = rotateLeft ? -1f : 1;
+            }
         }
-
-        Vector3 scale = transform.localScale;
-        if (rotateLeft && scale.x > 0f)
-        {
-            scale.x *= -1;
-            transform.localScale = scale;
-        }
-        else if (!rotateLeft && scale.x < 0f)
-        {
-            scale.x *= -1;
-            transform.localScale = scale;
-        }
+        else//isnt idle
+            newScaleRotated.x = rotateLeft ? -1f : 1;
+        transform.localScale = newScaleRotated;
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {

@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -15,7 +16,6 @@ public class PlayerCarry : MonoBehaviour
     [SerializeField] private LayerMask _carryableMask;
     [Header("Read-Only Params")]
     [SerializeField, ReadOnly] private Vector2 _aimThrowInput;
-    
     bool _isAiming = false;
     private ICarryable _carryable;
     public void TryPick(InputAction.CallbackContext ctx)
@@ -28,17 +28,27 @@ public class PlayerCarry : MonoBehaviour
     void PickRelease()
     {
         Collider2D carryableColllider = Physics2D.OverlapCircle(transform.position, _pickupRadius, _carryableMask);
-        if (_carryable == null && carryableColllider != null && carryableColllider.TryGetComponent(out ICarryable carryable))
+        if (!_isCarrying)//not carring
         {
-             // Try to get the ICarryable component from the collider
-            _carryable = carryable;
-            _isCarrying = true; // If we found a carryable object, we are carrying it, otherwise not
-            _carryable?.AttachToParent(transform, _attachPos);//attach to parent if picked, detach if released
+            if (_carryable == null)//not carring
+                if (carryableColllider != null && carryableColllider.TryGetComponent(out ICarryable carryable))
+                {
+                    // Try to get the ICarryable component from the collider
+                    _carryable = carryable;
+                    _isCarrying = true; // If we found a carryable object, we are carrying it, otherwise not
+                    _carryable?.AttachToParent(transform, _attachPos);//attach to parent if picked, detach if released
+                }
+                else
+                    Debug.LogWarning("No carryable object found in range or the object does not implement ICarryable interface.");
+            else Debug.Log("there is a carryable");
         }
-        else if(_carryable != null && _isCarrying)
+        else if(_isCarrying)
         {
+            if (_carryable == null)
+                Debug.LogWarning("carrying but the item is null");
             _carryable.Detach(); // If we are carrying something, detach it
             _carryable = null; // Clear the carryable reference
+            _isCarrying = false; // Update the carrying state
         }
         Debug.Log($"{(_isCarrying ? "picked" : "released")} an item!");
     }
@@ -63,7 +73,7 @@ public class PlayerCarry : MonoBehaviour
                     _aimThrowInput = transform.up; 
                 IThrowable throwable = _carryable as IThrowable;
                 throwable.BeginThrow();
-                throwable.Throw(_aimThrowInput.normalized, _throwForce);
+                throwable.Throw(GetComponent<CoopPlayerController>().ThrowDirection, _throwForce);
                 _isCarrying = false;
             }
 
