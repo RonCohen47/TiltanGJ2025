@@ -34,6 +34,8 @@ public class CoopPlayerController : MonoBehaviour
             return;
         }
         _moveInput = ctx.ReadValue<Vector2>();
+        if (_moveInput.magnitude < 0.35f)
+            _moveInput = Vector2.zero; // Ignore small inputs to prevent jitter
     }
     private void Movement()
     {
