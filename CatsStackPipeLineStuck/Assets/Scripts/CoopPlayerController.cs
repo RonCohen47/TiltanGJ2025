@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UIElements;
 
 [RequireComponent(typeof(Rigidbody2D))]
 [RequireComponent(typeof(PlayerInput))]
@@ -25,6 +26,8 @@ public class CoopPlayerController : MonoBehaviour
     void Update()
     {
         Movement();
+        RotatePlayer();
+        
     }
     public void OnMove(InputAction.CallbackContext ctx)
     {
@@ -65,18 +68,51 @@ public class CoopPlayerController : MonoBehaviour
         if(_moveInput != Vector2.zero)
             _lastMoveInput = _moveInput;
     }
+
+    private void RotatePlayer()
+    {
+        bool rotateLeft = _moveInput.x < 0f;
+        if (_moveInput == Vector2.zero)
+        {
+            rotateLeft = _lastMoveInput.x < 0f;
+        }
+
+        Vector3 scale = transform.localScale;
+        if (rotateLeft && scale.x > 0f)
+        {
+            scale.x *= -1;
+            transform.localScale = scale;
+        }
+        else if (!rotateLeft && scale.x < 0f)
+        {
+            scale.x *= -1;
+            transform.localScale = scale;
+        }
+    }
     private void OnCollisionEnter2D(Collision2D collision)
     {
         _currentVelocity = Vector2.zero;
-        Debug.Log("collided with wall");
+        //Debug.Log("collided with wall");
         _touchedColliders.Add(collision.collider);
-        Vector2 pushOutside = transform.position - collision.collider.transform.position;
-        _rb.AddForce(pushOutside.normalized * 0.1f, ForceMode2D.Impulse);
-
+        pushOutsideOfWalls(collision.transform);
+    }
+    private void OnCollisionStay2D(Collision2D collision)
+    {
+        pushOutsideOfWalls(collision.transform);
+    }
+    private void pushOutsideOfWalls(Transform wallT)
+    {
+        //Debug.Log("staying on wall");
+        Vector2 pushOutside = transform.position - wallT.position;
+        if (pushOutside.x > pushOutside.y)
+            pushOutside.y = 0; // Push out horizontally
+        else
+            pushOutside.x = 0; // Push out vertically
+        transform.position += (Vector3)pushOutside.normalized * 0.1f;
     }
     private void OnCollisionExit2D(Collision2D collision)
     {
-        Debug.Log("out off wall");
+        //Debug.Log("out off wall");
         _touchedColliders.Remove(collision.collider);
         _rb.angularVelocity = 0f; // Reset angular velocity to prevent spinning
         _rb.linearVelocity = Vector2.zero; // Reset linear velocity to stop movement

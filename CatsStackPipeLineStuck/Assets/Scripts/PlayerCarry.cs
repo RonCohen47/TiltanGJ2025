@@ -56,7 +56,6 @@ public class PlayerCarry : MonoBehaviour
     }
     public void Throw(InputAction.CallbackContext ctx)
     {
-        Debug.Log("thrown an item!");
         if(ctx.canceled && _isCarrying)
             if(_carryable is IThrowable)
             {
@@ -68,6 +67,15 @@ public class PlayerCarry : MonoBehaviour
                 _isCarrying = false;
             }
 
+    }
+    public void ClearCarryable()
+    {
+        if (_carryable != null)
+        {
+            _carryable.Detach();
+            _carryable = null;
+            _isCarrying = false;
+        }
     }
     private void OnDrawGizmos()
     {

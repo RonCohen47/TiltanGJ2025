@@ -7,7 +7,7 @@ public class ThrowableAssignment : MonoBehaviour, IThrowable
     [SerializeField] private Rigidbody2D _rb;
     [SerializeField] AssignmentSO _assignmentSO;
     [Header("Read-Only Params")]
-    [SerializeField, ReadOnly] private Transform _carryingParent; // Parent transform to attach the carried object to
+    [SerializeField, ReadOnly] private PlayerCarry _carryingParent; // Parent transform to attach the carried object to
     public AssignmentSO Data { get => _assignmentSO; set => _assignmentSO = value; }
 
     public void BeginThrow()
@@ -34,9 +34,14 @@ public class ThrowableAssignment : MonoBehaviour, IThrowable
 
     public void AttachToParent(Transform parent,Transform attachPosition)
     {
+        if (_carryingParent != null)
+        {
+            _carryingParent.ClearCarryable(); // Clear any existing carryable if already attached
+            Debug.LogWarning("Already attached to a parent. Detaching first.");
+        }
         Debug.Log("<color=green>attached to player");
-        _carryingParent = parent;
-        transform.SetParent(_carryingParent, true);
+        _carryingParent = parent.GetComponent<PlayerCarry>();
+        transform.SetParent(_carryingParent.transform, true);
         transform.position = attachPosition.position;
     }
 
