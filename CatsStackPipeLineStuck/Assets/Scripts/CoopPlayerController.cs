@@ -27,13 +27,13 @@ public class CoopPlayerController : MonoBehaviour
     [SerializeField, ReadOnly] float _dashDurationTimer;
     [SerializeField, ReadOnly] bool _hasDashed;
     [SerializeField, ReadOnly] bool _canDash = true; // Can dash if true, otherwise false
+    [ReadOnly] public bool InputLocked;
     [SerializeField, ReadOnly] private Vector2 _dashDir; // Direction of the dash
     [SerializeField, ReadOnly] private Vector2 _moveInput;
     [SerializeField, ReadOnly] private Vector2 _lastMoveInputNot0;
     [SerializeField, ReadOnly] private Vector2 _lastFrameMoveInput;
     [SerializeField, ReadOnly] private Vector2 _currentVelocity = Vector3.zero; // Tracks current velocity
-    private Vector2 _latestMoveInput;
-    public Vector2 ThrowDirection => _moveInput == Vector2.zero ? _lastMoveInputNot0 : _moveInput; // Use last input if current is zero
+    public Vector2 ThrowDirection => _moveInput == Vector2.left ? _lastMoveInputNot0 : _moveInput; // Use last input if current is zero
     private void Start()
     {
         _dashDurationTimer = _dashDuration; // Reset dash duration timer when not dashing
@@ -73,6 +73,8 @@ public class CoopPlayerController : MonoBehaviour
 
     private void MovementFixed()
     {
+        if (InputLocked)
+            return;
         // Pick a dash direction: prefer live input, then last non-zero, then current velocity, fallback right
         Vector2 dashDir =
             (_moveInput != Vector2.zero ? _moveInput :
@@ -111,8 +113,6 @@ public class CoopPlayerController : MonoBehaviour
             _moveInput = ctx.ReadValue<Vector2>();
             if (_moveInput.magnitude < 0.35f)
                 _moveInput = Vector2.zero; // Ignore small inputs to prevent jitter
-            else
-                _latestMoveInput = _moveInput; //save last move that is not zero
         }
         else
             _moveInput = Vector2.zero;

@@ -1,51 +1,44 @@
 using System;
+using DG.Tweening;
 using UnityEngine;
 
-[RequireComponent(typeof(Rigidbody2D))]
 public class ThrowableAssignment : MonoBehaviour, IThrowable
 {
     [Header("References")]
-    [SerializeField] private Rigidbody2D _rb;
+    [SerializeField] Collider2D _collider; // Collider to detect landing
     [SerializeField] AssignmentSO _assignmentSO;
-    [SerializeField] private float _throwingCooldown = 2; //
+    [SerializeField] private float _throwingDuration = 2; //
     [Header("Read-Only Params")]
     [SerializeField, ReadOnly] private PlayerCarry _carryingParent; // Parent transform to attach the carried object to
     [SerializeField, ReadOnly] private float _throwingTimer;
     [SerializeField, ReadOnly] bool _hasThrown = false;
     public AssignmentSO Data { get => _assignmentSO; set => _assignmentSO = value; }
-
-    private void Update()
-    {
-        if (_hasThrown)
-        {
-            _throwingTimer += Time.deltaTime;
-            if (_throwingCooldown <= _throwingTimer)
-            {
-                _throwingTimer = 0; // Reset the timer if cooldown is not reached
-                _hasThrown = false;
-                OnLanded();
-            }
-        }
-    }
+    private Tween _throwTween;
     public void BeginThrow()
     {
         // Detach from carry parent, enable physics
         _carryingParent.ClearCarryable();
         _hasThrown = true;
+        _collider.enabled = true; // Enable collider to detect landing
     }
 
     public void Throw(Vector2 direction, float force)
     {
+        // cancel any previous throw tween
+        _throwTween?.Kill();
         // Ensure normalized direction; add slight arc
-        _rb.AddForce(direction * force, ForceMode2D.Impulse);
+        Vector3 end = transform.position + (Vector3)(direction.normalized * force);
+        _throwTween = transform.DOMove(end, _throwingDuration)
+        .SetEase(Ease.OutQuad)
+        .OnComplete(() => {
+            _throwTween = null;
+            });   // clear handle when done
     }
 
     public void OnLanded()
     {
-        Debug.Log("on lended");
-        _rb.angularVelocity = 0f; // Reset angular velocity to prevent spinning
-        _rb.linearVelocity = Vector2.zero; // Reset linear velocity to stop movement
-        // Snap/stop when landing on a valid surface if needed
+        _throwTween?.Kill(); // or _throwTween?.Kill(true);
+        _throwTween = null;
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -60,6 +53,7 @@ public class ThrowableAssignment : MonoBehaviour, IThrowable
             Debug.LogWarning("Already attached to a parent. Detaching first.");
         }
         Debug.Log("<color=green>attached to player</color>");
+        _collider.enabled = false;
         _carryingParent = parent.GetComponent<PlayerCarry>();
         transform.SetParent(_carryingParent.transform, true);
         transform.position = attachPosition.position; // Snap to the attach position
@@ -69,5 +63,6 @@ public class ThrowableAssignment : MonoBehaviour, IThrowable
     {
         _carryingParent = null;
         transform.SetParent(null, true);
+        _collider.enabled = true;
     }
 }

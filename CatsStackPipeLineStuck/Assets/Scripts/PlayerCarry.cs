@@ -39,6 +39,7 @@ public class PlayerCarry : MonoBehaviour
                     _carryable = carryable;
                     _isCarrying = true; // If we found a carryable object, we are carrying it, otherwise not
                     _carryable?.AttachToParent(transform, _attachPos);//attach to parent if picked, detach if released
+                    Debug.Log($"{(_isCarrying ? "picked" : "released")} an item!");
                 }
                 else
                     Debug.LogWarning("No carryable object found in range or the object does not implement ICarryable interface.");
@@ -51,33 +52,28 @@ public class PlayerCarry : MonoBehaviour
             _carryable.Detach(); // If we are carrying something, detach it
             _carryable = null; // Clear the carryable reference
             _isCarrying = false; // Update the carrying state
-        }
-        Debug.Log($"{(_isCarrying ? "picked" : "released")} an item!");
-    }
-    public void Aim(InputAction.CallbackContext ctx)
-    {
-        if(ctx.started)
-            _isAiming = true;
-        if (ctx.performed)
-            _aimThrowInput = ctx.ReadValue<Vector2>();
-        else if (ctx.canceled)
-        {
-            _isAiming = false;
-            _aimThrowInput = Vector2.zero; // Reset aim direction when not aiming
+            Debug.Log($"{(_isCarrying ? "picked" : "released")} an item!");
         }
     }
     public void Throw(InputAction.CallbackContext ctx)
     {
+        CoopPlayerController player = GetComponent<CoopPlayerController>();
+        if (ctx.started && _isCarrying)
+        {
+            player.InputLocked = true; // Lock input to prevent movement while throwing
+            player.GetComponent<Rigidbody2D>().linearVelocity = Vector2.zero; // Reset velocity to prevent unwanted movement
+        }
         if(ctx.canceled && _isCarrying)
             if(_carryable is IThrowable)
             {
-                if(!_isAiming)
+                if (!_isAiming)
                     _aimThrowInput = transform.up; 
                 IThrowable throwable = _carryable as IThrowable;
                 throwable.BeginThrow();
                 throwable.Throw(GetComponent<CoopPlayerController>().ThrowDirection, _throwForce);
                 Debug.Log($"<color=green>Throwing {_carryable} in direction {_aimThrowInput} with force {_throwForce}</color>");
                 _isCarrying = false;
+                player.InputLocked = false;
             }
 
     }

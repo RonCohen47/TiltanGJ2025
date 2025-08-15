@@ -44,7 +44,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1882659895187735904}
-  m_BodyType: 0
+  m_BodyType: 1
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
@@ -59,7 +59,7 @@ Rigidbody2D:
   m_ExcludeLayers:
     serializedVersion: 2
     m_Bits: 0
-  m_Interpolate: 0
+  m_Interpolate: 1
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
@@ -93,7 +93,7 @@ CircleCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
@@ -111,9 +111,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b9e1ecbc128a984899686e350c2dba9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _rb: {fileID: 6573743796823871263}
-  _assignmentSO: {fileID: 11400000, guid: fbf560b842be27e4781af027d387b0e0, type: 2}
+  _collider: {fileID: 9178499309303007988}
+  _assignmentSO: {fileID: 11400000, guid: bb9a683ec78fa1547b16b6259b845dd3, type: 2}
+  _throwingDuration: 2
   _carryingParent: {fileID: 0}
+  _throwingTimer: 0
+  _hasThrown: 0
 --- !u!114 &2031716799575880143
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -201,7 +204,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 0
   m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
   m_Color: {r: 0.7632456, g: 0, b: 0.8301887, a: 1}
   m_FlipX: 0
