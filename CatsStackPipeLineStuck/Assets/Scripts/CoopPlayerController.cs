@@ -16,12 +16,12 @@ public class CoopPlayerController : MonoBehaviour
     [SerializeField,Range(0, 0.1f)] private float _stopEpsilon = 0.05f;  // snap to 0 below this
     [SerializeField, Range(-1f, 1f)] private float _flipDotThreshold = -0.2f; // <= means “opposite enough”
     [SerializeField] private Vector2 _minMaxSpeed;
-    [SerializeField] private Vector2 _moveInput;
-    [SerializeField] private Vector2 _lastMoveInput;
-    [SerializeField] private Vector2 _currentVelocity = Vector3.zero; // Tracks current velocity
+    [Header("Read-only Params")]
+    [SerializeField, ReadOnly] private Vector2 _moveInput;
+    [SerializeField, ReadOnly] private Vector2 _lastMoveInput;
+    [SerializeField, ReadOnly] private Vector2 _currentVelocity = Vector3.zero; // Tracks current velocity
+    [SerializeField, ReadOnly] private List<Collider2D> _touchedColliders;//tracks colliders currently being touched by the player
 
-    [SerializeField] private List<Collider2D> _touchedColliders = new List<Collider2D>();
-    // Called automatically by PlayerInput (Send Messages) for "Move"
     void Update()
     {
         Movement();
