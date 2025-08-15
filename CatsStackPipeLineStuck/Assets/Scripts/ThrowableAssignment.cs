@@ -59,7 +59,7 @@ public class ThrowableAssignment : MonoBehaviour, IThrowable
             _carryingParent.ClearCarryable(); // Clear any existing carryable if already attached
             Debug.LogWarning("Already attached to a parent. Detaching first.");
         }
-        Debug.Log("<color=green>attached to player");
+        Debug.Log("<color=green>attached to player</color>");
         _carryingParent = parent.GetComponent<PlayerCarry>();
         transform.SetParent(_carryingParent.transform, true);
         transform.position = attachPosition.position;
