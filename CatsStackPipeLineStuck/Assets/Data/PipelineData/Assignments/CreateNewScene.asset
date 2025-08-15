@@ -13,5 +13,4 @@ MonoBehaviour:
   m_Name: CreateNewScene
   m_EditorClassIdentifier: 
   AssignmentName: create game scene
-  Sprite: {fileID: 21300000, guid: adeeaaa3235bf6d4a9b87688474307ed, type: 3}
-  assignmentType: 0
+  Sprite: {fileID: -3804690177649883966, guid: 241d458765cfad44e8c6b56d1e3bae36, type: 3}
