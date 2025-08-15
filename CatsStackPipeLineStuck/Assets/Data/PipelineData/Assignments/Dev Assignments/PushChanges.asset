@@ -13,4 +13,5 @@ MonoBehaviour:
   m_Name: PushChanges
   m_EditorClassIdentifier: 
   AssignmentName: 
-  Sprite: {fileID: 0}
+  Sprite: {fileID: 21300000, guid: 89fc4cb38cd7aaa45b08e924282e98f9, type: 3}
+  assignmentType: 0
