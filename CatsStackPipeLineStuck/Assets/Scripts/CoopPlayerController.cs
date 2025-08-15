@@ -68,15 +68,27 @@ public class CoopPlayerController : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision)
     {
         _currentVelocity = Vector2.zero;
-        Debug.Log("collided with wall");
+        //Debug.Log("collided with wall");
         _touchedColliders.Add(collision.collider);
-        Vector2 pushOutside = transform.position - collision.collider.transform.position;
-        _rb.AddForce(pushOutside.normalized * 0.1f, ForceMode2D.Impulse);
-
+        pushOutsideOfWalls(collision.transform);
+    }
+    private void OnCollisionStay2D(Collision2D collision)
+    {
+        pushOutsideOfWalls(collision.transform);
+    }
+    private void pushOutsideOfWalls(Transform wallT)
+    {
+        //Debug.Log("staying on wall");
+        Vector2 pushOutside = transform.position - wallT.position;
+        if (pushOutside.x > pushOutside.y)
+            pushOutside.y = 0; // Push out horizontally
+        else
+            pushOutside.x = 0; // Push out vertically
+        transform.position += (Vector3)pushOutside.normalized * 0.1f;
     }
     private void OnCollisionExit2D(Collision2D collision)
     {
-        Debug.Log("out off wall");
+        //Debug.Log("out off wall");
         _touchedColliders.Remove(collision.collider);
         _rb.angularVelocity = 0f; // Reset angular velocity to prevent spinning
         _rb.linearVelocity = Vector2.zero; // Reset linear velocity to stop movement
