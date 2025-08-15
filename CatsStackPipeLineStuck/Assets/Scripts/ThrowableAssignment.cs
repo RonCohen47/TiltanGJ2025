@@ -3,7 +3,6 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody2D))]
 public class ThrowableAssignment : MonoBehaviour, IThrowable
 {
-    [SerializeField] private AssignmentSO _assignmentData; // Reference to the assignment data scriptable object
     private Transform _carryingParent; // Parent transform to attach the carried object to
 
     private Rigidbody2D _rb;
@@ -33,11 +32,12 @@ public class ThrowableAssignment : MonoBehaviour, IThrowable
         OnLanded();
     }
 
-    public void AttachToParent(Transform parent)
+    public void AttachToParent(Transform parent,Transform attachPosition)
     {
+        Debug.Log("<color=green>attached to player");
         _carryingParent = parent;
         transform.SetParent(_carryingParent, true);
-        transform.localPosition = Vector3.zero;
+        transform.position = attachPosition.position;
     }
 
     public void Detach()
