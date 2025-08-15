@@ -11,8 +11,9 @@ public class PlayerCarry : MonoBehaviour
     [Header("Carry Settings")]
     [SerializeField] private bool _isCarrying = false;
     [SerializeField] private float _throwForce;
-    [SerializeField] private LayerMask _carryableMask;
     [SerializeField] private float _pickupRadius = 0.5f;
+    [SerializeField] private LayerMask _carryableMask;
+    [Header("Read-Only Params")]
     [SerializeField, ReadOnly] private Vector2 _aimThrowInput;
     
     bool _isAiming = false;

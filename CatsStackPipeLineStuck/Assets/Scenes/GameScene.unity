@@ -1530,7 +1530,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b9e1ecbc128a984899686e350c2dba9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _rb: {fileID: 6315314796703102996}
   _assignmentSO: {fileID: 11400000, guid: fbf560b842be27e4781af027d387b0e0, type: 2}
+  _carryingParent: {fileID: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

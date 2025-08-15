@@ -3,11 +3,11 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody2D))]
 public class ThrowableAssignment : MonoBehaviour, IThrowable
 {
-    private Transform _carryingParent; // Parent transform to attach the carried object to
-
-    private Rigidbody2D _rb;
-
+    [Header("References")]
+    [SerializeField] private Rigidbody2D _rb;
     [SerializeField] AssignmentSO _assignmentSO;
+    [Header("Read-Only Params")]
+    [SerializeField, ReadOnly] private Transform _carryingParent; // Parent transform to attach the carried object to
     public AssignmentSO Data { get => _assignmentSO; set => _assignmentSO = value; }
 
     public void BeginThrow()

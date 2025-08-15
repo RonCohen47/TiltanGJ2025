@@ -16,7 +16,7 @@ public class CoopPlayerController : MonoBehaviour
     [SerializeField,Range(0, 0.1f)] private float _stopEpsilon = 0.05f;  // snap to 0 below this
     [SerializeField, Range(-1f, 1f)] private float _flipDotThreshold = -0.2f; // <= means “opposite enough”
     [SerializeField] private Vector2 _minMaxSpeed;
-    [Header("Read-only Params")]
+    [Header("Read-Only Params")]
     [SerializeField, ReadOnly] private Vector2 _moveInput;
     [SerializeField, ReadOnly] private Vector2 _lastMoveInput;
     [SerializeField, ReadOnly] private Vector2 _currentVelocity = Vector3.zero; // Tracks current velocity
