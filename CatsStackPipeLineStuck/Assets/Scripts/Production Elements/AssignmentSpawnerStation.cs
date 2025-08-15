@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class BriefStation : Station
+public class AssignmentSpawnerStation : Station
 {
     void Start()
     {

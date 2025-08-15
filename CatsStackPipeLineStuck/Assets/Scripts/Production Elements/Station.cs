@@ -25,21 +25,14 @@ public abstract class Station : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-
-        if (collision.IsTouchingLayers(LayerMask.GetMask("Player")))
-        {
-            PlayerInRange = true;
-        }
-      
-
+        if ((playerLayerMask.value & (1 << collision.gameObject.layer)) != 0)
+            PlayerInRange = true;      
     }
 
     private void OnTriggerExit2D(Collider2D other)
     {
         if ((playerLayerMask.value & (1 << other.gameObject.layer)) != 0)
-        {
-            // other is in playerLayerMask
-        }
+            PlayerInRange = false;
     }
 
 }
