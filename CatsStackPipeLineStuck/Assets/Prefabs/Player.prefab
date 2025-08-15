@@ -112,7 +112,7 @@ Transform:
   m_GameObject: {fileID: 4074620313584060984}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.25, y: 0, z: 0}
+  m_LocalPosition: {x: 0.56, y: -0.07, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -313,17 +313,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _rb: {fileID: 4587022553686255125}
-  _moveSpeed: 6
   _deceleration: 15
   _acceleration: 2
   _stopEpsilon: 0.05
   _flipDotThreshold: -0.2
   _ySpeedModifier: 0.827
   _minMaxSpeed: {x: 3, y: 4}
+  _dashPower: 4
+  _dashDuration: 0.6
+  _dashCooldown: 1
+  _dashInactiveTimer: 0
+  _dashDurationTimer: 0
+  _hasDashed: 0
+  _canDash: 1
+  _dashDir: {x: 0, y: 0}
   _moveInput: {x: 0, y: 0}
-  _lastMoveInput: {x: 0, y: -1}
+  _lastMoveInputNot0: {x: 0, y: 0}
+  _lastFrameMoveInput: {x: 0, y: 0}
   _currentVelocity: {x: 0, y: 0}
-  _touchedColliders: []
 --- !u!114 &1612399781771153642
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -461,6 +468,22 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: 9caa3d8a-6b2f-4e8e-8bad-6ede561bd9be
     m_ActionName: UI/TrackedDeviceOrientation
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: -916718512746989565}
+        m_TargetAssemblyTypeName: CoopPlayerController, Assembly-CSharp
+        m_MethodName: OnDash
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 51dfbd50-9bd6-4f91-b621-9e2ff7eb6edb
+    m_ActionName: 'Player/Dash[/Keyboard/b,/DualSenseGamepadHID/buttonEast]'
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
@@ -489,10 +512,10 @@ Rigidbody2D:
   m_ExcludeLayers:
     serializedVersion: 2
     m_Bits: 8
-  m_Interpolate: 0
+  m_Interpolate: 1
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!58 &3024912255162281321
 CircleCollider2D:
   m_ObjectHideFlags: 0
