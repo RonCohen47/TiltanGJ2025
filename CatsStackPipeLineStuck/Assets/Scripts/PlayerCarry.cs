@@ -28,11 +28,11 @@ public class PlayerCarry : MonoBehaviour
     void PickRelease()
     {
         Collider2D carryableColllider = Physics2D.OverlapCircle(transform.position, _pickupRadius, _carryableMask);
-        if (carryableColllider != null && carryableColllider.TryGetComponent(out ICarryable carryable))
+        if (_carryable == null && carryableColllider != null && carryableColllider.TryGetComponent(out ICarryable carryable))
         {
              // Try to get the ICarryable component from the collider
-            _carryable = !_isCarrying ? carryable : null;
-            _isCarrying = _carryable != null; // If we found a carryable object, we are carrying it, otherwise not
+            _carryable = carryable;
+            _isCarrying = true; // If we found a carryable object, we are carrying it, otherwise not
             _carryable?.AttachToParent(transform, _attachPos);//attach to parent if picked, detach if released
         }
         else if(_carryable != null && _isCarrying)
@@ -75,6 +75,7 @@ public class PlayerCarry : MonoBehaviour
             _carryable.Detach();
             _carryable = null;
             _isCarrying = false;
+            Debug.Log("Carryable was stolen");
         }
     }
     private void OnDrawGizmos()
