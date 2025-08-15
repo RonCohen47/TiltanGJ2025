@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UIElements;
 
 [RequireComponent(typeof(Rigidbody2D))]
 [RequireComponent(typeof(PlayerInput))]
@@ -25,6 +26,8 @@ public class CoopPlayerController : MonoBehaviour
     void Update()
     {
         Movement();
+        RotatePlayer();
+        
     }
     public void OnMove(InputAction.CallbackContext ctx)
     {
@@ -64,6 +67,27 @@ public class CoopPlayerController : MonoBehaviour
         transform.position += new Vector3(_currentVelocity.x, _currentVelocity.y) * Time.deltaTime;
         if(_moveInput != Vector2.zero)
             _lastMoveInput = _moveInput;
+    }
+
+    private void RotatePlayer()
+    {
+        bool rotateLeft = _moveInput.x < 0f;
+        if (_moveInput == Vector2.zero)
+        {
+            rotateLeft = _lastMoveInput.x < 0f;
+        }
+
+        Vector3 scale = transform.localScale;
+        if (rotateLeft && scale.x > 0f)
+        {
+            scale.x *= -1;
+            transform.localScale = scale;
+        }
+        else if (!rotateLeft && scale.x < 0f)
+        {
+            scale.x *= -1;
+            transform.localScale = scale;
+        }
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
