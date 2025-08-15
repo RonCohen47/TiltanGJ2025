@@ -93,9 +93,9 @@ public class CoopPlayerController : MonoBehaviour
         _currentVelocity = Vector2.zero;
         _touchedColliders.Add(collision.collider);
         ContactPoint2D contactPoint2D = collision.GetContact(0);
-        pushOutsideOfWalls(contactPoint2D.point);
+        PushOutsideOfWalls(contactPoint2D.point);
     }
-    private void pushOutsideOfWalls(Vector2 hitWallPoint)
+    private void PushOutsideOfWalls(Vector2 hitWallPoint)
     {
         Vector2 pushOutside = (Vector2)transform.position - hitWallPoint;
         pushOutside = pushOutside.normalized;

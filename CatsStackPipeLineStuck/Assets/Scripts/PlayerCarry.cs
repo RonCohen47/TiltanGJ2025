@@ -14,6 +14,7 @@ public class PlayerCarry : MonoBehaviour
     [SerializeField] private float _throwForce;
     [SerializeField] private float _pickupRadius = 0.5f;
     [SerializeField] private LayerMask _carryableMask;
+    
     [Header("Read-Only Params")]
     [SerializeField, ReadOnly] private Vector2 _aimThrowInput;
     bool _isAiming = false;
@@ -25,6 +26,7 @@ public class PlayerCarry : MonoBehaviour
             PickRelease();
         }
     }
+    
     void PickRelease()
     {
         Collider2D carryableColllider = Physics2D.OverlapCircle(transform.position, _pickupRadius, _carryableMask);
@@ -74,6 +76,7 @@ public class PlayerCarry : MonoBehaviour
                 IThrowable throwable = _carryable as IThrowable;
                 throwable.BeginThrow();
                 throwable.Throw(GetComponent<CoopPlayerController>().ThrowDirection, _throwForce);
+                Debug.Log($"<color=green>Throwing {_carryable} in direction {_aimThrowInput} with force {_throwForce}</color>");
                 _isCarrying = false;
             }
 
@@ -85,7 +88,6 @@ public class PlayerCarry : MonoBehaviour
             _carryable.Detach();
             _carryable = null;
             _isCarrying = false;
-            Debug.Log("Carryable was stolen");
         }
     }
     private void OnDrawGizmos()
