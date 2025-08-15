@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 6573743796823871263}
   - component: {fileID: 9178499309303007988}
   - component: {fileID: 8687793944310899509}
+  - component: {fileID: 2031716799575880143}
   m_Layer: 3
   m_Name: Throwable Template
   m_TagString: Untagged
@@ -113,7 +114,18 @@ MonoBehaviour:
   _rb: {fileID: 6573743796823871263}
   _assignmentSO: {fileID: 11400000, guid: fbf560b842be27e4781af027d387b0e0, type: 2}
   _carryingParent: {fileID: 0}
-  _GraphicSpriteRenderer: {fileID: 8144114577714456238}
+--- !u!114 &2031716799575880143
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1882659895187735904}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9019c6d5863c53b4f8f67d4b344fc62c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8967637698975220591
 GameObject:
   m_ObjectHideFlags: 0
