@@ -120,7 +120,7 @@ MonoBehaviour:
   _stationSnapCooldown: 0.5
   _stationSnapTimer: 0
   _assignmentSO: {fileID: 11400000, guid: 7d75841b6f5e0a740927122e44f47d1d, type: 2}
-  _processStation: {fileID: 0}
+  Station: {fileID: 0}
   _carryingParent: {fileID: 0}
   _throwingTimer: 0
 --- !u!1 &6209757961605926088
@@ -287,7 +287,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 3
   m_Sprite: {fileID: 21300000, guid: f66c59b57f069564c9fd88271a301aa8, type: 3}
-  m_Color: {r: 0, g: 1, b: 0.35854053, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0

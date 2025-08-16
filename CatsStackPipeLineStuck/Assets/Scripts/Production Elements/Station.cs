@@ -6,6 +6,7 @@ public abstract class Station : MonoBehaviour
     public AssignmentSO currentAssignment;
     [ReadOnly] public bool PlayerInRange;
     [ReadOnly] public bool IsOccupied;
+    [ReadOnly] public ThrowableAssignment ThrowableAssignment;
     [SerializeField] private LayerMask playerLayerMask;
 
     public AssignmentSO OutputAssignment(AssignmentType playerType)//AFTER Processing
@@ -18,10 +19,11 @@ public abstract class Station : MonoBehaviour
         return null;
     }
 
-    public void InputAssignment(AssignmentSO assignment)
+    public void InputAssignment(AssignmentSO assignment, ThrowableAssignment throwableAssignment)
     {
         if (currentAssignment == null)
         {
+            ThrowableAssignment = throwableAssignment; 
             currentAssignment = assignment;
             IsOccupied = true;
         }
@@ -30,6 +32,7 @@ public abstract class Station : MonoBehaviour
     {
         currentAssignment = null;
         IsOccupied = false;
+        ThrowableAssignment = null;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

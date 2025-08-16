@@ -101,6 +101,7 @@ public class PlayerCarry : MonoBehaviour
                     ThrowableAssignment throwable = (_carryable as ThrowableAssignment);
                     if(throwable.Station is BriefStation)
                     {
+                        Debug.Log("spawn brief");
                         (throwable.Station as BriefStation).SpawnBrief();//spawn new brief.
                     }
                 }

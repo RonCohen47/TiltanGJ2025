@@ -147,10 +147,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 043c3420efa62874b87c441a5315c086, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentAssignment: {fileID: 0}
+  currentAssignment: {fileID: 11400000, guid: 845095fb0ebe6ac4887ea8f5bab1bad3, type: 2}
   PlayerInRange: 0
   IsOccupied: 0
   playerLayerMask:
     serializedVersion: 2
     m_Bits: 128
   _stationType: 2
+  _trowablePrefab: {fileID: 1882659895187735904, guid: 838b58f9c5960414395cc51231b036d3, type: 3}

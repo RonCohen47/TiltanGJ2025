@@ -103,7 +103,7 @@ public class ThrowableAssignment : MonoBehaviour, IThrowable
             //Debug.Log("<color=lightblue>Snap to station</color>");
             transform.position = station.transform.position;
             Station processStation = station.GetComponent<Station>();
-            processStation.InputAssignment(_assignmentSO);
+            processStation.InputAssignment(_assignmentSO,this);
             Station = processStation;
 
 
