@@ -39,7 +39,7 @@ public class PlayerCarry : MonoBehaviour
                     _carryable = carryable;
                     _isCarrying = true; // If we found a carryable object, we are carrying it, otherwise not
                     _carryable?.AttachToParent(transform, _attachPos);//attach to parent if picked, detach if released
-                    Debug.Log($"{(_isCarrying ? "picked" : "released")} an item!");
+                    //Debug.Log($"{(_isCarrying ? "picked" : "released")} an item!");
                 }
                 else
                     Debug.LogWarning("No carryable object found in range or the object does not implement ICarryable interface.");
@@ -52,7 +52,7 @@ public class PlayerCarry : MonoBehaviour
             _carryable.Detach(); // If we are carrying something, detach it
             _carryable = null; // Clear the carryable reference
             _isCarrying = false; // Update the carrying state
-            Debug.Log($"{(_isCarrying ? "picked" : "released")} an item!");
+            //Debug.Log($"{(_isCarrying ? "picked" : "released")} an item!");
         }
     }
     public void Throw(InputAction.CallbackContext ctx)

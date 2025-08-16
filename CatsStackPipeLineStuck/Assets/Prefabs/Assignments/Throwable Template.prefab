@@ -114,6 +114,10 @@ MonoBehaviour:
   _collider: {fileID: 9178499309303007988}
   _assignmentSO: {fileID: 11400000, guid: bb9a683ec78fa1547b16b6259b845dd3, type: 2}
   _throwingDuration: 2
+  _stationMask:
+    serializedVersion: 2
+    m_Bits: 256
+  _stationDetectionRadius: 2
   _carryingParent: {fileID: 0}
   _throwingTimer: 0
   _hasThrown: 0

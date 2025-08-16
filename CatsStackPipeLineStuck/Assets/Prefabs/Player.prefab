@@ -326,6 +326,7 @@ MonoBehaviour:
   _dashDurationTimer: 0
   _hasDashed: 0
   _canDash: 1
+  InputLocked: 0
   _dashDir: {x: 0, y: 0}
   _moveInput: {x: 0, y: 0}
   _lastMoveInputNot0: {x: 0, y: 0}
@@ -346,7 +347,7 @@ MonoBehaviour:
   _attachPos: {fileID: 2813350891229373674}
   _isCarrying: 0
   _throwForce: 6
-  _pickupRadius: 2.5
+  _pickupRadius: 1.8
   _carryableMask:
     serializedVersion: 2
     m_Bits: 8
