@@ -12,6 +12,7 @@ public class PlayerCarry : MonoBehaviour
     [Header("References")]
     [SerializeField] private Transform _attachPos;
     [SerializeField] private SpineAnimationController _controller;
+    [SerializeField] private SpriteRenderer _circleRenderer; // Circle renderer to indicate carrying state
     [Header("Carry Settings")]
     [SerializeField] private float _throwForce;
     [SerializeField] private float _pickupRadius = 0.5f;
@@ -37,14 +38,16 @@ public class PlayerCarry : MonoBehaviour
         {
             case AssignmentType.Dev: // Default
                 _controller.SetSkin("Yasha");
-
+                _circleRenderer.color = Color.green;
                 break;
             case AssignmentType.Art: // Carrying
                 _controller.SetSkin("Beau");
+                _circleRenderer.color = Color.blue;
 
                 break;
             case AssignmentType.Sound: // Processing
                 _controller.SetSkin("Sirius");
+                _circleRenderer.color = Color.red;
 
                 break;
             default:
