@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 6573743796823871263}
   - component: {fileID: 9178499309303007988}
   - component: {fileID: 8687793944310899509}
-  - component: {fileID: 2031716799575880143}
   m_Layer: 3
   m_Name: Throwable Template
   m_TagString: Untagged
@@ -116,25 +115,13 @@ MonoBehaviour:
   _stationMask:
     serializedVersion: 2
     m_Bits: 256
-  _stationDetectionRadius: 1.3
+  _stationDetectionRadius: 0.9
   _stationSnapCooldown: 0.5
   _stationSnapTimer: 0
   _assignmentSO: {fileID: 11400000, guid: 7d75841b6f5e0a740927122e44f47d1d, type: 2}
   _processStation: {fileID: 0}
   _carryingParent: {fileID: 0}
   _throwingTimer: 0
---- !u!114 &2031716799575880143
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1882659895187735904}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9019c6d5863c53b4f8f67d4b344fc62c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &8967637698975220591
 GameObject:
   m_ObjectHideFlags: 0
