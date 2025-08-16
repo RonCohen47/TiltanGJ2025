@@ -3,11 +3,15 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "AssignmentSO", menuName = "Scriptable Objects/AssignmentSO")]
 public class AssignmentSO : ScriptableObject
 {
-    
-    //id
+    public AssignmentSO[] _nextAssignment;
     public string AssignmentName;
     public Sprite Sprite;
-    //public AssignmentType assignmentType;
+    public AssignmentType assignmentType;
 
-
+    public enum AssignmentType
+    {
+        Dev,
+        Art,
+        Sound
+    }
 }
