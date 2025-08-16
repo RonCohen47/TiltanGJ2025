@@ -1,6 +1,7 @@
 using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using static AssignmentData;
 
 public class PlayerCarry : MonoBehaviour
 {
@@ -10,16 +11,40 @@ public class PlayerCarry : MonoBehaviour
     [Header("References")]
     [SerializeField] private Transform _attachPos;
     [Header("Carry Settings")]
-    [SerializeField] private bool _isCarrying = false;
     [SerializeField] private float _throwForce;
     [SerializeField] private float _pickupRadius = 0.5f;
+    [SerializeField] private float _stationDetectionRadius = 0.5f; // Radius to detect stations when throwing
     [SerializeField] private LayerMask _carryableMask;
+    [SerializeField] private LayerMask _stationMask;
 
-    
+
     [Header("Read-Only Params")]
+    [SerializeField, ReadOnly] private bool _isCarrying = false;
+    [SerializeField, ReadOnly] private bool _isProcessing = false;
     [SerializeField, ReadOnly] private Vector2 _aimThrowInput;
+    [SerializeField, ReadOnly] private float _processTimer = 0;
+    [SerializeField, ReadOnly] private float _processDuration = 0;
+    [SerializeField, ReadOnly] private ProcessStation _processedStation;
+    [SerializeField, ReadOnly] private AssignmentType _playerType;
     bool _isAiming = false;
     private ICarryable _carryable;
+    public void Init(AssignmentType assignmentType)
+    {
+        _playerType = assignmentType;
+    }
+    private void Update()
+    {
+        if (_isProcessing)
+        {
+            _processTimer += Time.deltaTime; // Decrease cooldown timer
+            if (_processTimer >= _processDuration)
+            {
+                _processTimer = 0;
+                _isProcessing = false; // Reset snapping state after cooldown
+                OnProcessEnded();
+            }
+        }
+    }
     public void TryPick(InputAction.CallbackContext ctx)
     {
         if (ctx.started)
@@ -29,6 +54,13 @@ public class PlayerCarry : MonoBehaviour
     }
     
     void PickRelease()
+    {
+        if(!_isCarrying)
+            Pick();
+        else
+            Release();
+    }
+    private void Pick()
     {
         Collider2D carryableColllider = Physics2D.OverlapCircle(transform.position, _pickupRadius, _carryableMask);
         if (!_isCarrying)//not carring
@@ -46,7 +78,10 @@ public class PlayerCarry : MonoBehaviour
                     Debug.LogWarning("No carryable object found in range or the object does not implement ICarryable interface.");
             else Debug.Log("there is a carryable");
         }
-        else if(_isCarrying)
+    }
+    private void Release()
+    {
+        if (_isCarrying)
         {
             if (_carryable == null)
                 Debug.LogWarning("carrying but the item is null");
@@ -65,16 +100,26 @@ public class PlayerCarry : MonoBehaviour
             {
                 LockPlayerInput();
             }
-            else
-            { 
-                
+            else if(!_isProcessing && TryHitStation(out ProcessStation hitStation))
+            {
+                Debug.Log("processing");
+                LockPlayerInput();
+                ProcessStation processStation = hitStation;
+                if(processStation.IsOccupied)
+                {
+                    _isProcessing = true;//started processing
+                    _processDuration = processStation.InteractionDuration;
+                }
+                _processedStation = processStation;
             }
         }
-        if(ctx.canceled && _isCarrying)
-            if(_carryable is IThrowable)
+        if (ctx.canceled)
+            if (_isProcessing)
+                _isProcessing = false; // Stop processing when the action is canceled
+            else if (_isCarrying && _carryable is IThrowable)
             {
                 if (!_isAiming)
-                    _aimThrowInput = transform.up; 
+                    _aimThrowInput = transform.up;
                 IThrowable throwable = _carryable as IThrowable;
                 throwable.BeginThrow();
                 throwable.Throw(GetComponent<CoopPlayerController>().ThrowDirection, _throwForce);
@@ -82,6 +127,7 @@ public class PlayerCarry : MonoBehaviour
                 _isCarrying = false;
                 player.InputLocked = false;
             }
+        
     }
     private void LockPlayerInput()
     {
@@ -102,5 +148,43 @@ public class PlayerCarry : MonoBehaviour
     {
         Gizmos.color = Color.cyan;
         Gizmos.DrawWireSphere(transform.position, _pickupRadius);
+    }
+    private bool TryHitStation(out ProcessStation hitStation)
+    {
+        Transform origin = transform;
+        Vector3 originPos = origin.position; // Get the position of the carrying parent or this object if not carried
+        Collider2D[] hits = Physics2D.OverlapCircleAll(origin.position, _stationDetectionRadius, _stationMask);
+        //if(hits.Length > 0)
+        //    Debug.Log("found stations");
+        //else
+        //    Debug.Log("no stations found");
+        Vector2 p = transform.position;
+        Collider2D closest = null;
+        float shortestDistance = float.PositiveInfinity;
+
+        foreach (var h in hits)
+        {
+            if (!h) continue;
+            // if (h.isTrigger) continue; // uncomment if you want solids only
+
+            float newDistance = Vector2.Distance(originPos, h.transform.position);  // squared distance origin -> collider
+            if (newDistance < shortestDistance)
+            {
+                shortestDistance = newDistance;
+                closest = h;
+            }
+        }
+
+        hitStation = closest?.GetComponent<ProcessStation>();
+        return hitStation != null;
+        //else, didnt hit a station, so do nothing
+    }
+    private void OnProcessEnded()
+    {
+        Pick();
+        IThrowable throwable = _carryable as IThrowable;
+        ThrowableAssignment processedAssignment = (throwable as ThrowableAssignment);
+        processedAssignment.SetAssignment(_processedStation.OutputAssignment(_playerType));
+        Debug.Log("ended process");
     }
 }

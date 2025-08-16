@@ -41,10 +41,10 @@ public class CoopGameManager : MonoBehaviour
         // Define colors for up to 4 players
         Color[] playerColors = new Color[]
         {
-        Color.red,
-        Color.blue,
-        Color.yellow,
-        new Color(0.5f, 0.8f, 1f) // light blue (custom)
+            Color.red,
+            Color.blue,
+            Color.yellow,
+            new Color(0.5f, 0.8f, 1f) // light blue (custom)
         };
 
         // Assign color to the player's sprite
@@ -57,7 +57,26 @@ public class CoopGameManager : MonoBehaviour
         {
             Debug.LogWarning($"Player {pi.playerIndex} has no SpriteRenderer to color.");
         }
-        Debug.Log($"<color=green>Player {pi.playerIndex} joined the game.</color>");
+        PlayerCarry pC = pi.GetComponentInChildren<PlayerCarry>();
+        AssignmentType playerType;
+        switch (idx)
+        {
+            case 0: // Default
+                playerType = AssignmentType.Dev;
+                break;
+            case 1: // Carrying
+                playerType = AssignmentType.Art;
+                break;
+            case 2: // Processing
+                playerType = AssignmentType.Sound;
+                break;
+            default:
+                playerType = AssignmentType.Dev;
+                break;
+
+        }
+        pC.Init(playerType);
+        //Debug.Log($"<color=green>Player {pi.playerIndex} joined the game.</color>");
     }
 
     private void OnPlayerLeft(PlayerInput pi)

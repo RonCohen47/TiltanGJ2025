@@ -345,13 +345,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _attachPos: {fileID: 2813350891229373674}
-  _isCarrying: 0
   _throwForce: 6
   _pickupRadius: 1.8
+  _stationDetectionRadius: 2
   _carryableMask:
     serializedVersion: 2
     m_Bits: 8
+  _stationMask:
+    serializedVersion: 2
+    m_Bits: 256
+  _isCarrying: 0
+  _isProcessing: 0
   _aimThrowInput: {x: 0, y: 0}
+  _processTimer: 0
+  _processDuration: 0
+  _processedStation: {fileID: 0}
 --- !u!114 &6909554967569054392
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -398,7 +406,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1612399781771153642}
         m_TargetAssemblyTypeName: PlayerCarry, Assembly-CSharp
-        m_MethodName: Throw
+        m_MethodName: ThrowProcess
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

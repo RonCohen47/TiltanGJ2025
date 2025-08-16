@@ -1,3 +1,4 @@
+using System.Linq;
 using UnityEngine;
 
 public abstract class Station : MonoBehaviour
@@ -7,10 +8,11 @@ public abstract class Station : MonoBehaviour
     [SerializeField, ReadOnly] public bool IsOccupied;
     [SerializeField] private LayerMask playerLayerMask;
 
-    public AssignmentSO OutputAssignment()
+    public AssignmentSO OutputAssignment(AssignmentType playerType)//AFTER Processing
     {
         if (currentAssignment != null)
         {
+            currentAssignment._nextAssignment.FirstOrDefault(c => c.assignmentType == playerType);
             return currentAssignment;
         }
         return null;
