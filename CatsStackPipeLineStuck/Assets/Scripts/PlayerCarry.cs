@@ -10,6 +10,7 @@ public class PlayerCarry : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     [Header("References")]
     [SerializeField] private Transform _attachPos;
+    [SerializeField] private SpineAnimationController _controller;
     [Header("Carry Settings")]
     [SerializeField] private float _throwForce;
     [SerializeField] private float _pickupRadius = 0.5f;
@@ -59,6 +60,9 @@ public class PlayerCarry : MonoBehaviour
             Pick();
         else
             Release();
+
+        _controller.ToggleHoldItem(_isCarrying);
+
     }
     private void Pick()
     {
@@ -71,7 +75,7 @@ public class PlayerCarry : MonoBehaviour
                     // Try to get the ICarryable component from the collider
                     _carryable = carryable;
                     _isCarrying = true; // If we found a carryable object, we are carrying it, otherwise not
-                    _carryable?.AttachToParent(transform, _attachPos);//attach to parent if picked, detach if released
+                    _carryable?.AttachToParent(transform, _controller);//attach to parent if picked, detach if released
                     //Debug.Log($"{(_isCarrying ? "picked" : "released")} an item!");
                 }
                 else
@@ -103,6 +107,7 @@ public class PlayerCarry : MonoBehaviour
             else if(!_isProcessing && TryHitStation(out ProcessStation hitStation))
             {
                 Debug.Log("processing");
+                _controller.ToggleWorking(true);
                 LockPlayerInput();
                 ProcessStation processStation = hitStation;
                 if(processStation.IsOccupied)
@@ -115,7 +120,10 @@ public class PlayerCarry : MonoBehaviour
         }
         if (ctx.canceled)
             if (_isProcessing)
+            {
+                _controller.ToggleWorking(false);
                 _isProcessing = false; // Stop processing when the action is canceled
+            }
             else if (_isCarrying && _carryable is IThrowable)
             {
                 if (!_isAiming)
@@ -181,6 +189,7 @@ public class PlayerCarry : MonoBehaviour
     }
     private void OnProcessEnded()
     {
+        
         Pick();
         IThrowable throwable = _carryable as IThrowable;
         ThrowableAssignment processedAssignment = (throwable as ThrowableAssignment);

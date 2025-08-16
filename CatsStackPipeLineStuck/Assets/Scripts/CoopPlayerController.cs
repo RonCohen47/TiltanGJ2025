@@ -10,6 +10,7 @@ using UnityEngine.UIElements;
 public class CoopPlayerController : MonoBehaviour
 {
     [Header("Componenet References")]
+    [SerializeField] private SpineAnimationController _animator;
     [SerializeField] private Rigidbody2D _rb;
     [Header("Movement Settings")]
     [SerializeField, Range(0,20)] float _deceleration = 6f; // How quickly the movement slows down
@@ -102,6 +103,8 @@ public class CoopPlayerController : MonoBehaviour
         }
         // Apply velocity via Rigidbody2D (y scaled)
         _rb.linearVelocity = new Vector2(_currentVelocity.x, _currentVelocity.y * _ySpeedModifier) + (_hasDashed ? _dashVelocity : Vector2.zero);
+        _animator.GroundedMovementAnimationUpdate(_rb.linearVelocity.magnitude);
+
 
         if (_moveInput != Vector2.zero)
             _lastMoveInputNot0 = _moveInput;

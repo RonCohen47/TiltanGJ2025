@@ -81,6 +81,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fd50af96b7b2a184797245f141f30057, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _animator: {fileID: 7541796653114488979}
   _rb: {fileID: 4587022553686255125}
   _deceleration: 15
   _acceleration: 2
@@ -114,6 +115,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _attachPos: {fileID: 2813350891229373674}
+  _controller: {fileID: 7541796653114488979}
   _throwForce: 6
   _pickupRadius: 1.8
   _stationDetectionRadius: 2
@@ -129,6 +131,7 @@ MonoBehaviour:
   _processTimer: 0
   _processDuration: 0
   _processedStation: {fileID: 0}
+  _playerType: 0
 --- !u!114 &6909554967569054392
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -396,3 +399,14 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1913193308489649364, guid: b9738b7cea124fd48aaf7fbc3ec0eec4, type: 3}
   m_PrefabInstance: {fileID: 5379310168502123678}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &7541796653114488979 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2454178131492815885, guid: b9738b7cea124fd48aaf7fbc3ec0eec4, type: 3}
+  m_PrefabInstance: {fileID: 5379310168502123678}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf3b3010443ff5a4897f0bf8b7913dc3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

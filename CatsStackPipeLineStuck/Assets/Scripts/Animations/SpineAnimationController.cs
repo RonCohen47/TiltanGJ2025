@@ -71,6 +71,11 @@ public class SpineAnimationController : MonoBehaviour
             _Hands = _state.SetAnimation(1, "ThrowPutDown", false);
             _Hands = _state.AddEmptyAnimation(1, 0.2f, -0.2f);
             _Hands.MixDuration = 0;
+
+        }
+        else if (isHolding == false)
+        {
+            Debug.Log("Tried To Throw");
         }
     }
 

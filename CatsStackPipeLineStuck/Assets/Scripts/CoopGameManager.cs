@@ -48,30 +48,26 @@ public class CoopGameManager : MonoBehaviour
         };
 
         // Assign color to the player's sprite
-        var sr = pi.GetComponentInChildren<SpriteRenderer>();
-        if (sr != null)
-        {
-            //sr.color = playerColors[pi.playerIndex % playerColors.Length];
-        }
-        else
-        {
-            Debug.LogWarning($"Player {pi.playerIndex} has no SpriteRenderer to color.");
-        }
+        var sr = pi.GetComponentInChildren<SpineAnimationController>();
         PlayerCarry pC = pi.GetComponentInChildren<PlayerCarry>();
         AssignmentType playerType;
         switch (idx)
         {
             case 0: // Default
                 playerType = AssignmentType.Dev;
+                sr.SetSkin("Yasha");
                 break;
             case 1: // Carrying
                 playerType = AssignmentType.Art;
+                sr.SetSkin("Beau");
                 break;
             case 2: // Processing
                 playerType = AssignmentType.Sound;
+                sr.SetSkin("Sirius");
                 break;
             default:
                 playerType = AssignmentType.Dev;
+                sr.SetSkin("Yasha");
                 break;
 
         }

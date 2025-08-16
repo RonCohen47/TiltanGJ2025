@@ -21,6 +21,10 @@ public class ThrowableAssignment : MonoBehaviour, IThrowable
     public AssignmentSO Data { get => _assignmentSO; set => _assignmentSO = value; }
     private Tween _throwTween;
     private bool _canSnapped = false; // To prevent snapping multiple times in a single throw
+    private bool _isHeld = false;
+    private SpineAnimationController _AttachedController;
+
+
     private void Update()
     {
         if (!_canSnapped)
@@ -32,6 +36,8 @@ public class ThrowableAssignment : MonoBehaviour, IThrowable
                 _canSnapped = true; // Reset snapping state after cooldown
             }
         }
+
+        if (_isHeld && _AttachedController != null) transform.position = _AttachedController.GetBonePosition();
     }
     public void SetAssignment(AssignmentSO assignment)
     {
@@ -117,7 +123,7 @@ public class ThrowableAssignment : MonoBehaviour, IThrowable
         OnLanded();
     }
 
-    public void AttachToParent(Transform parent,Transform attachPosition)
+    public void AttachToParent(Transform parent,SpineAnimationController AttachBone)
     {
         if (_carryingParent != null)
         {
@@ -128,7 +134,8 @@ public class ThrowableAssignment : MonoBehaviour, IThrowable
         _collider.enabled = false;
         _carryingParent = parent.GetComponent<PlayerCarry>();
         transform.SetParent(_carryingParent.transform, true);
-        transform.position = attachPosition.position; // Snap to the attach position
+        _AttachedController = AttachBone; // Snap to the attach position
+        _isHeld = true;
         _processStation?.ClearInput();
     }
 
@@ -137,6 +144,8 @@ public class ThrowableAssignment : MonoBehaviour, IThrowable
         if (TryHitStation(out Station hitStation) != null) OnHitStation(hitStation);
         _carryingParent = null;
         transform.SetParent(null, true);
+        _isHeld = false;
+        _AttachedController = null;
         _collider.enabled = true;
     }
     private void OnDrawGizmos()
