@@ -57,7 +57,8 @@ public class ThrowableAssignment : MonoBehaviour, IThrowable
     }
     private Transform TryHitStation(out Transform hitStation)
     {
-        var hits = Physics2D.OverlapCircleAll(transform.position, _stationDetectionRadius, _stationMask);
+        Transform origin = _carryingParent == null ? transform : _carryingParent.transform;
+        var hits = Physics2D.OverlapCircleAll(origin.position, _stationDetectionRadius, _stationMask);
         Collider2D closest = null;
         float bestSqr = float.PositiveInfinity;
         Vector2 p = transform.position;
@@ -117,10 +118,10 @@ public class ThrowableAssignment : MonoBehaviour, IThrowable
 
     public void Detach()
     {
+        if (TryHitStation(out Transform hitStation) != null) OnHitStation(hitStation);
         _carryingParent = null;
         transform.SetParent(null, true);
         _collider.enabled = true;
-        if (TryHitStation(out Transform hitStation) != null) OnHitStation(hitStation);
     }
     private void OnDrawGizmos()
     {
