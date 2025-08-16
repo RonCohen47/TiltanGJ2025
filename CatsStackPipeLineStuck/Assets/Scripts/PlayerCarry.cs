@@ -14,6 +14,7 @@ public class PlayerCarry : MonoBehaviour
     [SerializeField] private float _throwForce;
     [SerializeField] private float _pickupRadius = 0.5f;
     [SerializeField] private LayerMask _carryableMask;
+
     
     [Header("Read-Only Params")]
     [SerializeField, ReadOnly] private Vector2 _aimThrowInput;
@@ -55,13 +56,19 @@ public class PlayerCarry : MonoBehaviour
             //Debug.Log($"{(_isCarrying ? "picked" : "released")} an item!");
         }
     }
-    public void Throw(InputAction.CallbackContext ctx)
+    public void ThrowProcess(InputAction.CallbackContext ctx)
     {
         CoopPlayerController player = GetComponent<CoopPlayerController>();
-        if (ctx.started && _isCarrying)
+        if (ctx.started)
         {
-            player.InputLocked = true; // Lock input to prevent movement while throwing
-            player.GetComponent<Rigidbody2D>().linearVelocity = Vector2.zero; // Reset velocity to prevent unwanted movement
+            if (_isCarrying)//carrying and 
+            {
+                LockPlayerInput();
+            }
+            else
+            { 
+                
+            }
         }
         if(ctx.canceled && _isCarrying)
             if(_carryable is IThrowable)
@@ -75,7 +82,12 @@ public class PlayerCarry : MonoBehaviour
                 _isCarrying = false;
                 player.InputLocked = false;
             }
-
+    }
+    private void LockPlayerInput()
+    {
+        CoopPlayerController player = GetComponent<CoopPlayerController>();
+        player.InputLocked = true; // Lock input to prevent movement while throwing
+        player.GetComponent<Rigidbody2D>().linearVelocity = Vector2.zero; // Reset velocity to prevent unwanted movement
     }
     public void ClearCarryable()
     {

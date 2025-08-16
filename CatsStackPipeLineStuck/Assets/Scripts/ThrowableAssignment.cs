@@ -15,6 +15,7 @@ public class ThrowableAssignment : MonoBehaviour, IThrowable
     [SerializeField] private float _stationSnapTimer = 0f; // Cooldown to prevent snapping too quickly
 
     [Header("Read-Only Params")]
+    [ReadOnly] public Station _processStation;
     [SerializeField, ReadOnly] private PlayerCarry _carryingParent; // Parent transform to attach the carried object to
     [SerializeField, ReadOnly] private float _throwingTimer;
     public AssignmentSO Data { get => _assignmentSO; set => _assignmentSO = value; }
@@ -49,51 +50,56 @@ public class ThrowableAssignment : MonoBehaviour, IThrowable
         .SetEase(Ease.OutQuad)
         .OnUpdate(() =>
         {
-            if(TryHitStation(out Transform hitStation) != null) OnLanded();
+            if(TryHitStation(out Station hitStation) != null) OnLanded();
         })
         .OnComplete(() => {
             _throwTween = null; 
         });   // clear handle when done
     }
-    private Transform TryHitStation(out Transform hitStation)
+    private Station TryHitStation(out Station hitStation)
     {
         Transform origin = _carryingParent == null ? transform : _carryingParent.transform;
-        var hits = Physics2D.OverlapCircleAll(origin.position, _stationDetectionRadius, _stationMask);
-        Collider2D closest = null;
-        float bestSqr = float.PositiveInfinity;
+        Vector3 originPos = origin.position; // Get the position of the carrying parent or this object if not carried
+        Collider2D[] hits = Physics2D.OverlapCircleAll(origin.position, _stationDetectionRadius, _stationMask);
         Vector2 p = transform.position;
+
+        Collider2D closest = null;
+        float shortestDistance = float.PositiveInfinity;
 
         foreach (var h in hits)
         {
-            if (!h) continue;                 // safety
-                                              // Skip triggers if you want only solid stations:
-                                              // if (h.isTrigger) continue;
+            if (!h) continue;
+            // if (h.isTrigger) continue; // uncomment if you want solids only
 
-            Vector2 cp = h.ClosestPoint(p);   // nearest point on this collider
-            float sqr = (cp - p).sqrMagnitude;
-            if (sqr < bestSqr)
+            float newDistance = Vector2.Distance(originPos, h.transform.position);  // squared distance origin -> collider
+            if (newDistance < shortestDistance)
             {
-                bestSqr = sqr;
+                shortestDistance = newDistance;
                 closest = h;
             }
         }
-        hitStation = closest?.transform;
+
+        hitStation = closest?.GetComponent<Station>();
         return hitStation;
         //else, didnt hit a station, so do nothing
     }
-    private void OnHitStation(Transform station)
+    private void OnHitStation(Station station)
     {
         if (_canSnapped)
         {
             Debug.Log("<color=lightblue>Snap to station</color>");
-            transform.position = station.position;
-            station.GetComponent<BasicStation>().InputAssignment(_assignmentSO);
+            transform.position = station.transform.position;
+            Station processStation = station.GetComponent<Station>();
+            processStation.InputAssignment(_assignmentSO);
+            _processStation = processStation;
+
+
             _canSnapped = false;
         }
     }
     public void OnLanded()
     {
-        if (TryHitStation(out Transform hitStation) != null) OnHitStation(hitStation);
+        if (TryHitStation(out Station hitStation) != null) OnHitStation(hitStation);
         _throwTween?.Kill(); // or _throwTween?.Kill(true);
         _throwTween = null;
     }
@@ -114,11 +120,12 @@ public class ThrowableAssignment : MonoBehaviour, IThrowable
         _carryingParent = parent.GetComponent<PlayerCarry>();
         transform.SetParent(_carryingParent.transform, true);
         transform.position = attachPosition.position; // Snap to the attach position
+        _processStation?.ClearInput();
     }
 
     public void Detach()
     {
-        if (TryHitStation(out Transform hitStation) != null) OnHitStation(hitStation);
+        if (TryHitStation(out Station hitStation) != null) OnHitStation(hitStation);
         _carryingParent = null;
         transform.SetParent(null, true);
         _collider.enabled = true;

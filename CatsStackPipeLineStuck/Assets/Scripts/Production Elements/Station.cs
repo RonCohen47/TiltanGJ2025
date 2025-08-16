@@ -24,6 +24,11 @@ public abstract class Station : MonoBehaviour
             IsOccupied = true;
         }
     }
+    public void ClearInput()
+    {
+        currentAssignment = null;
+        IsOccupied = false;
+    }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
