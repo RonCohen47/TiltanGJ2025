@@ -3,9 +3,9 @@ using UnityEngine;
 
 public abstract class Station : MonoBehaviour
 {
-    [SerializeField, ReadOnly] protected AssignmentSO currentAssignment;
-    [SerializeField, ReadOnly] protected bool PlayerInRange;
-    [SerializeField, ReadOnly] public bool IsOccupied;
+    public AssignmentSO currentAssignment;
+    [ReadOnly] public bool PlayerInRange;
+    [ReadOnly] public bool IsOccupied;
     [SerializeField] private LayerMask playerLayerMask;
 
     public AssignmentSO OutputAssignment(AssignmentType playerType)//AFTER Processing

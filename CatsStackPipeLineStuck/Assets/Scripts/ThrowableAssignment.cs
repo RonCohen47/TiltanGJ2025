@@ -15,7 +15,7 @@ public class ThrowableAssignment : MonoBehaviour, IThrowable
 
     public AssignmentSO _assignmentSO;
     [Header("Read-Only Params")]
-    [ReadOnly] public Station _processStation;
+    [ReadOnly] public Station Station;
     [SerializeField, ReadOnly] private PlayerCarry _carryingParent; // Parent transform to attach the carried object to
     [SerializeField, ReadOnly] private float _throwingTimer;
     public AssignmentSO Data { get => _assignmentSO; set => _assignmentSO = value; }
@@ -104,7 +104,7 @@ public class ThrowableAssignment : MonoBehaviour, IThrowable
             transform.position = station.transform.position;
             Station processStation = station.GetComponent<Station>();
             processStation.InputAssignment(_assignmentSO);
-            _processStation = processStation;
+            Station = processStation;
 
 
             _canSnapped = false;
@@ -136,7 +136,7 @@ public class ThrowableAssignment : MonoBehaviour, IThrowable
         transform.SetParent(_carryingParent.transform, true);
         _AttachedController = AttachBone; // Snap to the attach position
         _isHeld = true;
-        _processStation?.ClearInput();
+        Station?.ClearInput();
     }
 
     public void Detach()
