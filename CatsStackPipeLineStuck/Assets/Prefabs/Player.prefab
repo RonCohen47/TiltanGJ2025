@@ -118,8 +118,8 @@ MonoBehaviour:
   _attachPos: {fileID: 2813350891229373674}
   _controller: {fileID: 7541796653114488979}
   _throwForce: 6
-  _pickupRadius: 1.8
-  _stationDetectionRadius: 2
+  _pickupRadius: 1.5
+  _stationDetectionRadius: 0.8
   _carryableMask:
     serializedVersion: 2
     m_Bits: 8

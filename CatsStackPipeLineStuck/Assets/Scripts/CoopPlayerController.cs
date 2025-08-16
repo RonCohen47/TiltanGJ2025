@@ -34,7 +34,7 @@ public class CoopPlayerController : MonoBehaviour
     [SerializeField, ReadOnly] private Vector2 _lastMoveInputNot0;
     [SerializeField, ReadOnly] private Vector2 _lastFrameMoveInput;
     [SerializeField, ReadOnly] private Vector2 _currentVelocity = Vector3.zero; // Tracks current velocity
-    public Vector2 ThrowDirection => _moveInput == Vector2.left ? _lastMoveInputNot0 : _moveInput; // Use last input if current is zero
+    public Vector2 ThrowDirection => _moveInput == Vector2.zero ? _lastMoveInputNot0 : _moveInput; // Use last input if current is zero
     private void Start()
     {
         _dashDurationTimer = _dashDuration; // Reset dash duration timer when not dashing

@@ -67,9 +67,7 @@ public class ThrowableAssignment : MonoBehaviour, IThrowable
         {
             if(TryHitStation(out Station hitStation) != null) OnLanded();
         })
-        .OnComplete(() => {
-            _throwTween = null; 
-        });   // clear handle when done
+        .OnComplete(() => { _throwTween = null; });   // clear handle when done
     }
     private Station TryHitStation(out Station hitStation)
     {
@@ -129,6 +127,8 @@ public class ThrowableAssignment : MonoBehaviour, IThrowable
         {
             _carryingParent.ClearCarryable(); // Clear any existing carryable if already attached
             Debug.LogWarning("Already attached to a parent. Detaching first.");
+            _throwTween?.Kill();
+            _throwTween = null;
         }
         //Debug.Log("<color=green>attached to player</color>");
         _collider.enabled = false;
