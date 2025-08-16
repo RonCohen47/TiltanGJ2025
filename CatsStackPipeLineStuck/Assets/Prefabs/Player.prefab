@@ -305,7 +305,7 @@ CircleCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7627263521013410244}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Density: 1
   m_Material: {fileID: 0}
@@ -369,8 +369,8 @@ CapsuleCollider2D:
   m_CompositeOperation: 0
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
-  m_Size: {x: 0.5, y: 1}
-  m_Direction: 0
+  m_Size: {x: 0.88, y: 0.4}
+  m_Direction: 1
 --- !u!1001 &5379310168502123678
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -385,7 +385,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1913193308489649364, guid: b9738b7cea124fd48aaf7fbc3ec0eec4, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.5
+      value: -0.096
       objectReference: {fileID: 0}
     - target: {fileID: 1913193308489649364, guid: b9738b7cea124fd48aaf7fbc3ec0eec4, type: 3}
       propertyPath: m_LocalPosition.z
