@@ -19,7 +19,7 @@ public class PlayerCarry : MonoBehaviour
     [SerializeField] private float _stationDetectionRadius = 0.5f; // Radius to detect stations when throwing
     [SerializeField] private LayerMask _carryableMask;
     [SerializeField] private LayerMask _stationMask;
-
+    [SerializeField] private ProcessSlider _processSlider; // Slider to show processing progress
 
     [Header("Read-Only Params")]
     [SerializeField, ReadOnly] private bool _isCarrying = false;
@@ -62,11 +62,15 @@ public class PlayerCarry : MonoBehaviour
         if (_isProcessing)
         {
             _processTimer += Time.deltaTime; // Decrease cooldown timer
+            _processSlider.SetProgress(_processTimer, _processDuration);
+
             if (_processTimer >= _processDuration)
             {
                 _processTimer = 0;
                 _isProcessing = false; // Reset snapping state after cooldown
                 OnProcessEnded();
+                _processSlider.Hide();
+
             }
         }
     }
@@ -143,6 +147,8 @@ public class PlayerCarry : MonoBehaviour
                 if(processStation.IsOccupied)
                 {
                     _isProcessing = true;//started processing
+                    _processSlider.Show();
+
                     _processDuration = processStation.InteractionDuration;
                 }
                 _processedStation = processStation;
