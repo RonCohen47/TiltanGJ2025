@@ -21,12 +21,9 @@ public abstract class Station : MonoBehaviour
 
     public void InputAssignment(AssignmentSO assignment, ThrowableAssignment throwableAssignment)
     {
-        if (currentAssignment == null)
-        {
-            ThrowableAssignment = throwableAssignment; 
-            currentAssignment = assignment;
-            IsOccupied = true;
-        }
+        ThrowableAssignment = throwableAssignment; 
+        currentAssignment = assignment;
+        IsOccupied = true;
     }
     public void ClearInput()
     {
