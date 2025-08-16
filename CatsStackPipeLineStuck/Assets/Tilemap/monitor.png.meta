@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: e810f6d269b0b0f4cbd25041e60c35d4
+guid: 324f1ce3b19b52f4fbf01019d83a948e
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -8538605731048881155
-    second: TopDownLaptop_0
+      213: 6864705659591406222
+    second: monitor_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -46,12 +46,12 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
-  alignment: 7
+  alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 400
+  spritePixelsToUnits: 256
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -100,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: TopDownLaptop_0
+      name: monitor_0
       rect:
         serializedVersion: 2
-        x: 26
-        y: 31
-        width: 214
-        height: 192
+        x: 29
+        y: 14
+        width: 169
+        height: 154
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: df387bbb357c08980800000000000000
-      internalID: -8538605731048881155
+      spriteID: e823f873d65544f50800000000000000
+      internalID: 6864705659591406222
       vertices: []
       indices: 
       edges: []
@@ -125,7 +125,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 5e97eb03825dee720800000000000000
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
@@ -135,7 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      TopDownLaptop_0: -8538605731048881155
+      monitor_0: 6864705659591406222
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
