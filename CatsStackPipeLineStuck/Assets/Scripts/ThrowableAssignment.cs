@@ -6,7 +6,6 @@ public class ThrowableAssignment : MonoBehaviour, IThrowable
 {
     [Header("References")]
     [SerializeField] Collider2D _collider; // Collider to detect landing
-    [SerializeField] AssignmentSO _assignmentSO;
     [Header("Throw and drop Settings")]
     [SerializeField] private float _throwingDuration = 2; //
     [SerializeField] private LayerMask _stationMask;
@@ -14,6 +13,7 @@ public class ThrowableAssignment : MonoBehaviour, IThrowable
     [SerializeField] private float _stationSnapCooldown = 0.5f; // Cooldown to prevent snapping 2 colliders too quickly
     [SerializeField] private float _stationSnapTimer = 0f; // Cooldown to prevent snapping too quickly
 
+    public AssignmentSO _assignmentSO;
     [Header("Read-Only Params")]
     [ReadOnly] public Station _processStation;
     [SerializeField, ReadOnly] private PlayerCarry _carryingParent; // Parent transform to attach the carried object to
@@ -31,6 +31,15 @@ public class ThrowableAssignment : MonoBehaviour, IThrowable
                 _stationSnapTimer = _stationSnapCooldown;
                 _canSnapped = true; // Reset snapping state after cooldown
             }
+        }
+    }
+    public void SetAssignment(AssignmentSO assignment)
+    {
+        _assignmentSO = assignment;
+        if (_assignmentSO != null)
+        {
+            // Optionally, set the sprite or other properties based on the assignment
+            // e.g., GetComponent<SpriteRenderer>().sprite = _assignmentSO.Sprite;
         }
     }
     public void BeginThrow()
@@ -87,7 +96,7 @@ public class ThrowableAssignment : MonoBehaviour, IThrowable
     {
         if (_canSnapped)
         {
-            Debug.Log("<color=lightblue>Snap to station</color>");
+            //Debug.Log("<color=lightblue>Snap to station</color>");
             transform.position = station.transform.position;
             Station processStation = station.GetComponent<Station>();
             processStation.InputAssignment(_assignmentSO);
@@ -115,7 +124,7 @@ public class ThrowableAssignment : MonoBehaviour, IThrowable
             _carryingParent.ClearCarryable(); // Clear any existing carryable if already attached
             Debug.LogWarning("Already attached to a parent. Detaching first.");
         }
-        Debug.Log("<color=green>attached to player</color>");
+        //Debug.Log("<color=green>attached to player</color>");
         _collider.enabled = false;
         _carryingParent = parent.GetComponent<PlayerCarry>();
         transform.SetParent(_carryingParent.transform, true);
