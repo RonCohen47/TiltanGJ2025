@@ -3,5 +3,10 @@ using UnityEngine;
 
 public class BriefStation : Station
 {
-    [SerializeField] private StationType _stationType;
+    [SerializeField] private AssignmentType _stationType;
+
+    public void SpawnBrief()
+    {
+        Instantiate(currentAssignment.Sprite, transform.position, Quaternion.identity);
+    }
 }
