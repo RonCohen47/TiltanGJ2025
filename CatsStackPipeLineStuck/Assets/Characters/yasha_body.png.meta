@@ -147,7 +147,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      yasha_body_0: -9196902949434849590
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

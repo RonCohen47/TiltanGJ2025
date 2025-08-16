@@ -147,7 +147,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      sirius_left_hand_0: 7931969520752969276
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -147,7 +147,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      yasha_left_foot_0: 4793371419309770239
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
