@@ -51,7 +51,7 @@ public class CoopGameManager : MonoBehaviour
         var sr = pi.GetComponentInChildren<SpriteRenderer>();
         if (sr != null)
         {
-            sr.color = playerColors[pi.playerIndex % playerColors.Length];
+            //sr.color = playerColors[pi.playerIndex % playerColors.Length];
         }
         else
         {

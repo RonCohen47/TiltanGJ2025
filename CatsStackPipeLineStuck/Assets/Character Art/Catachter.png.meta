@@ -1,0 +1,871 @@
+fileFormatVersion: 2
+guid: 2d9b47a5e0fb1234daa85b49d4942155
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 6108432229876574018
+    second: Catachter_0
+  - first:
+      213: 4681919248499269161
+    second: Catachter_1
+  - first:
+      213: -9042698972309113665
+    second: Catachter_2
+  - first:
+      213: -3636518291249565401
+    second: Catachter_3
+  - first:
+      213: -6628793022612726857
+    second: Catachter_4
+  - first:
+      213: 6717993370501360893
+    second: Catachter_5
+  - first:
+      213: 4198722572607836121
+    second: Catachter_6
+  - first:
+      213: -9183434790331296589
+    second: Catachter_7
+  - first:
+      213: 1436935428138227764
+    second: Catachter_8
+  - first:
+      213: -6686994314070229918
+    second: Catachter_9
+  - first:
+      213: -3482512385319799251
+    second: Catachter_10
+  - first:
+      213: -6958657953160072059
+    second: Catachter_11
+  - first:
+      213: 4498502023962234570
+    second: Catachter_12
+  - first:
+      213: 464965616358671881
+    second: Catachter_13
+  - first:
+      213: -7133254264355233164
+    second: Catachter_14
+  - first:
+      213: 1819705956096533449
+    second: Catachter_15
+  - first:
+      213: -1048523139746475085
+    second: Catachter_16
+  - first:
+      213: 2583501540961842710
+    second: Catachter_17
+  - first:
+      213: -617660197060017687
+    second: Catachter_18
+  - first:
+      213: 1854845689443305946
+    second: Catachter_19
+  - first:
+      213: -2122098565432354642
+    second: Catachter_20
+  - first:
+      213: -8896266231859907528
+    second: Catachter_21
+  - first:
+      213: 7403095899016515399
+    second: Catachter_22
+  - first:
+      213: 3440981823533976741
+    second: Catachter_23
+  - first:
+      213: -1632593872973555079
+    second: Catachter_24
+  - first:
+      213: -7682477839957951519
+    second: Catachter_25
+  - first:
+      213: -3615582147354834381
+    second: Catachter_26
+  - first:
+      213: 7335159703108554660
+    second: Catachter_27
+  - first:
+      213: 719184978708599873
+    second: Catachter_28
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 0
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Catachter_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 315
+        width: 261
+        height: 190
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 247275ccfb285c450800000000000000
+      internalID: 6108432229876574018
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Catachter_1
+      rect:
+        serializedVersion: 2
+        x: 263
+        y: 426
+        width: 93
+        height: 78
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 92edcd920c489f040800000000000000
+      internalID: 4681919248499269161
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Catachter_2
+      rect:
+        serializedVersion: 2
+        x: 363
+        y: 423
+        width: 13
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fb4b9b8e131e18280800000000000000
+      internalID: -9042698972309113665
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Catachter_3
+      rect:
+        serializedVersion: 2
+        x: 367
+        y: 290
+        width: 258
+        height: 222
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 721fbd691ed788dc0800000000000000
+      internalID: -3636518291249565401
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Catachter_4
+      rect:
+        serializedVersion: 2
+        x: 263
+        y: 315
+        width: 97
+        height: 109
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7bb9495eddbc104a0800000000000000
+      internalID: -6628793022612726857
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Catachter_5
+      rect:
+        serializedVersion: 2
+        x: 1193
+        y: 261
+        width: 91
+        height: 78
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dfca924806b1b3d50800000000000000
+      internalID: 6717993370501360893
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Catachter_6
+      rect:
+        serializedVersion: 2
+        x: 1286
+        y: 261
+        width: 91
+        height: 78
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9df44ba1febd44a30800000000000000
+      internalID: 4198722572607836121
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Catachter_7
+      rect:
+        serializedVersion: 2
+        x: 208
+        y: 302
+        width: 9
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3b4d650d6b2ed8080800000000000000
+      internalID: -9183434790331296589
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Catachter_8
+      rect:
+        serializedVersion: 2
+        x: 323
+        y: 304
+        width: 13
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4385a5f982501f310800000000000000
+      internalID: 1436935428138227764
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Catachter_9
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 269
+        height: 301
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 26c79ceb9160333a0800000000000000
+      internalID: -6686994314070229918
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Catachter_10
+      rect:
+        serializedVersion: 2
+        x: 374
+        y: 276
+        width: 6
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d267d1bcf61abafc0800000000000000
+      internalID: -3482512385319799251
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Catachter_11
+      rect:
+        serializedVersion: 2
+        x: 1082
+        y: 181
+        width: 109
+        height: 96
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 584727cc571ed6f90800000000000000
+      internalID: -6958657953160072059
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Catachter_12
+      rect:
+        serializedVersion: 2
+        x: 356
+        y: 0
+        width: 206
+        height: 261
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ace05a7b1c3ed6e30800000000000000
+      internalID: 4498502023962234570
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Catachter_13
+      rect:
+        serializedVersion: 2
+        x: 567
+        y: 0
+        width: 263
+        height: 222
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 90644dbb3c3e37600800000000000000
+      internalID: 464965616358671881
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Catachter_14
+      rect:
+        serializedVersion: 2
+        x: 832
+        y: 0
+        width: 248
+        height: 222
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 472e0984a07910d90800000000000000
+      internalID: -7133254264355233164
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Catachter_15
+      rect:
+        serializedVersion: 2
+        x: 1193
+        y: 181
+        width: 93
+        height: 78
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9c3ebc40de4e04910800000000000000
+      internalID: 1819705956096533449
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Catachter_16
+      rect:
+        serializedVersion: 2
+        x: 1288
+        y: 181
+        width: 93
+        height: 78
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3b352ac72c5e271f0800000000000000
+      internalID: -1048523139746475085
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Catachter_17
+      rect:
+        serializedVersion: 2
+        x: 1383
+        y: 181
+        width: 92
+        height: 78
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 61674b9a6f07ad320800000000000000
+      internalID: 2583501540961842710
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Catachter_18
+      rect:
+        serializedVersion: 2
+        x: 1477
+        y: 181
+        width: 91
+        height: 78
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9e10752c251ad67f0800000000000000
+      internalID: -617660197060017687
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Catachter_19
+      rect:
+        serializedVersion: 2
+        x: 1620
+        y: 111
+        width: 109
+        height: 100
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ad9ce60c35cbdb910800000000000000
+      internalID: 1854845689443305946
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Catachter_20
+      rect:
+        serializedVersion: 2
+        x: 1731
+        y: 111
+        width: 109
+        height: 100
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ea8d90d199acc82e0800000000000000
+      internalID: -2122098565432354642
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Catachter_21
+      rect:
+        serializedVersion: 2
+        x: 1842
+        y: 111
+        width: 109
+        height: 100
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 834ffae1ffc1a8480800000000000000
+      internalID: -8896266231859907528
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Catachter_22
+      rect:
+        serializedVersion: 2
+        x: 1082
+        y: 94
+        width: 11
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 74fc7033f741db660800000000000000
+      internalID: 7403095899016515399
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Catachter_23
+      rect:
+        serializedVersion: 2
+        x: 1089
+        y: 0
+        width: 262
+        height: 179
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5ac8156ccb2d0cf20800000000000000
+      internalID: 3440981823533976741
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Catachter_24
+      rect:
+        serializedVersion: 2
+        x: 1353
+        y: 0
+        width: 265
+        height: 179
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 97a9eeab58cd759e0800000000000000
+      internalID: -1632593872973555079
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Catachter_25
+      rect:
+        serializedVersion: 2
+        x: 1620
+        y: 0
+        width: 97
+        height: 109
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1ebfe7aab1b526590800000000000000
+      internalID: -7682477839957951519
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Catachter_26
+      rect:
+        serializedVersion: 2
+        x: 1747
+        y: 0
+        width: 109
+        height: 109
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 33acba2713fd2ddc0800000000000000
+      internalID: -3615582147354834381
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Catachter_27
+      rect:
+        serializedVersion: 2
+        x: 1858
+        y: 0
+        width: 102
+        height: 109
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4af8b8af2e8bbc560800000000000000
+      internalID: 7335159703108554660
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Catachter_28
+      rect:
+        serializedVersion: 2
+        x: 1962
+        y: 0
+        width: 78
+        height: 94
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 14419bf7dee0bf900800000000000000
+      internalID: 719184978708599873
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      Catachter_0: 6108432229876574018
+      Catachter_1: 4681919248499269161
+      Catachter_10: -3482512385319799251
+      Catachter_11: -6958657953160072059
+      Catachter_12: 4498502023962234570
+      Catachter_13: 464965616358671881
+      Catachter_14: -7133254264355233164
+      Catachter_15: 1819705956096533449
+      Catachter_16: -1048523139746475085
+      Catachter_17: 2583501540961842710
+      Catachter_18: -617660197060017687
+      Catachter_19: 1854845689443305946
+      Catachter_2: -9042698972309113665
+      Catachter_20: -2122098565432354642
+      Catachter_21: -8896266231859907528
+      Catachter_22: 7403095899016515399
+      Catachter_23: 3440981823533976741
+      Catachter_24: -1632593872973555079
+      Catachter_25: -7682477839957951519
+      Catachter_26: -3615582147354834381
+      Catachter_27: 7335159703108554660
+      Catachter_28: 719184978708599873
+      Catachter_3: -3636518291249565401
+      Catachter_4: -6628793022612726857
+      Catachter_5: 6717993370501360893
+      Catachter_6: 4198722572607836121
+      Catachter_7: -9183434790331296589
+      Catachter_8: 1436935428138227764
+      Catachter_9: -6686994314070229918
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
