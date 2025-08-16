@@ -98,6 +98,11 @@ public class PlayerCarry : MonoBehaviour
                     _isCarrying = true; // If we found a carryable object, we are carrying it, otherwise not
                     _carryable?.AttachToParent(transform, _controller);//attach to parent if picked, detach if released
                     //Debug.Log($"{(_isCarrying ? "picked" : "released")} an item!");
+                    ThrowableAssignment throwable = (_carryable as ThrowableAssignment);
+                    if(throwable.Station is BriefStation)
+                    {
+                        (throwable.Station as BriefStation).SpawnBrief();//spawn new brief.
+                    }
                 }
                 else
                     Debug.LogWarning("No carryable object found in range or the object does not implement ICarryable interface.");
