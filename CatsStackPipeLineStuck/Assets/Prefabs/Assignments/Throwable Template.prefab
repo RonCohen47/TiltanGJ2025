@@ -97,8 +97,8 @@ CircleCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
-  m_Radius: 0.5
+  m_Offset: {x: -0.009787366, y: 0}
+  m_Radius: 0.23574136
 --- !u!114 &8687793944310899509
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -116,7 +116,7 @@ MonoBehaviour:
   _stationMask:
     serializedVersion: 2
     m_Bits: 256
-  _stationDetectionRadius: 0.56
+  _stationDetectionRadius: 0.41
   _stationSnapCooldown: 0.5
   _stationSnapTimer: 0
   _assignmentSO: {fileID: 11400000, guid: 7d75841b6f5e0a740927122e44f47d1d, type: 2}

@@ -560,7 +560,7 @@ MonoBehaviour:
   _controller: {fileID: 7541796653114488979}
   _circleRenderer: {fileID: 1387539809389836022}
   _throwForce: 6
-  _pickupRadius: 1.5
+  _pickupRadius: 1.24
   _stationDetectionRadius: 0.8
   _carryableMask:
     serializedVersion: 2
