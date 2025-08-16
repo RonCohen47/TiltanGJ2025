@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: ConceptIcon
   m_EditorClassIdentifier: 
   m_Sprite: {fileID: 21300000, guid: 24018d6cf2e003b4396dfb36f62f5c94, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.9909091, g: 1, b: 0.76363635, a: 0.9607843}
   m_Transform:
     e00: 1
     e01: 0

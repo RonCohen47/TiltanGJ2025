@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: AIIcon
   m_EditorClassIdentifier: 
   m_Sprite: {fileID: 21300000, guid: 5050c0ef7e416f24f81a6cc3ea38a8cb, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.9909091, g: 1, b: 0.76363635, a: 0.9607843}
   m_Transform:
     e00: 1
     e01: 0
