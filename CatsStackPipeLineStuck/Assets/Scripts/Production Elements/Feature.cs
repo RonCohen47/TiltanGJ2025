@@ -1,5 +1,7 @@
+using Mono.Cecil.Cil;
 using NUnit.Framework;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -7,11 +9,15 @@ public class Feature : MonoBehaviour
 {
     [SerializeField] private FeatureSO _featureSORef;
     [SerializeField] public List<Image> _FeatureUI;
+    [SerializeField] public List<Image> _backgroundImages;
     [SerializeField] private Slider _slider;
     [SerializeField] private Image _fillImage;
     [SerializeField] private Color _startColor = Color.green;
     [SerializeField] private Color _midColor = Color.yellow;
     [SerializeField] private Color _endColor = Color.red;
+    [SerializeField] private Color _artColor;
+    [SerializeField] private Color _devColor;
+    [SerializeField] private Color _soundColor;
 
     private float _deadlineTime;
     private float _timeLeft;
@@ -27,6 +33,42 @@ public class Feature : MonoBehaviour
                 if (index >= 0 && index < _featureSORef.requiredAssignments.Count)
                 {
                     image.sprite = _featureSORef.requiredAssignments[index].Sprite;
+                    switch (_featureSORef.requiredAssignments[index].assignmentType)
+                    {
+                        case AssignmentType.Dev: image.color = _devColor; break;
+                        case AssignmentType.Art: image.color = _artColor; break;
+                        case AssignmentType.Sound: image.color = _soundColor; break;
+                    }
+                }
+                else
+                {
+                    Debug.LogWarning($"Index {index} is out of range for requiredAssignments.");
+                }
+            }
+            else
+            {
+                Debug.LogWarning("FeatureSO reference is not set.");
+            }
+            index++;
+        }
+        index = 0;
+
+        foreach(var image in _backgroundImages)
+        {
+            if (_featureSORef != null)
+            {
+                if (index >= 0 && index < _featureSORef.requiredAssignments.Count)
+                {
+                    if (_featureSORef.requiredAssignments[index].IsPolished)
+                    {
+                        switch (_featureSORef.requiredAssignments[index].polishType)
+                        {
+                            case AssignmentType.Dev: image.color = _devColor; break;
+                            case AssignmentType.Art: image.color = _artColor; break;
+                            case AssignmentType.Sound: image.color = _soundColor; break;
+                        }
+                    }
+                    else image.color = Color.white; break;
                 }
                 else
                 {

@@ -12,5 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5f26c2e3e3dbf84281147093e897d88, type: 3}
   m_Name: Generated Photo (Art AI)
   m_EditorClassIdentifier: 
+  _nextAssignment: []
   AssignmentName: create repo
-  Sprite: {fileID: 946069425891749207, guid: 800039f11960b1f47804dc4d383ca678, type: 3}
+  Sprite: {fileID: -3804690177649883966, guid: dcd3792fa1150964b8639cefde48e187, type: 3}
+  assignmentType: 0
