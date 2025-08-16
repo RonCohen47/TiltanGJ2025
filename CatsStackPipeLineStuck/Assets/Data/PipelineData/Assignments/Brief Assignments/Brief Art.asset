@@ -17,5 +17,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 665df14866da13a4c9570c730e70dbd6, type: 2}
   - {fileID: 11400000, guid: e97dd9a4fbde48748b9d0dce20acb0e5, type: 2}
   AssignmentName: Art Brief
-  Sprite: {fileID: 0}
+  Sprite: {fileID: 21300000, guid: cb5e5938e1c5eee48be8a9fe66254d6b, type: 3}
   assignmentType: 1
+  IsPolished: 0
+  polishType: 0

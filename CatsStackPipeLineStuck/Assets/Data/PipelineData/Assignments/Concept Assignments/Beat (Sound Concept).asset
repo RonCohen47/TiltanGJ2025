@@ -14,5 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _nextAssignment: []
   AssignmentName: create repo
-  Sprite: {fileID: 1045209175017838013, guid: 8bd36d31642e3bb40be00422c943aefa, type: 3}
+  Sprite: {fileID: 21300000, guid: 24018d6cf2e003b4396dfb36f62f5c94, type: 3}
   assignmentType: 2
+  IsPolished: 0
+  polishType: 0
