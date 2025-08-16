@@ -15,7 +15,7 @@ public class SpineAnimationController : MonoBehaviour
     private Bone _lookAtBone;
 
 
-    void Start()
+    void Awake()
     {
         _state = _animator.AnimationState;
         _skeleton = _animator.Skeleton;
@@ -29,6 +29,7 @@ public class SpineAnimationController : MonoBehaviour
 
     public void SetSkin(string skinName)
     {
+        if (_skeleton == null) _skeleton = _animator.Skeleton; ;
         _skeleton.SetSkin(skinName);
     }
 
@@ -71,11 +72,8 @@ public class SpineAnimationController : MonoBehaviour
             _Hands = _state.SetAnimation(1, "ThrowPutDown", false);
             _Hands = _state.AddEmptyAnimation(1, 0.2f, -0.2f);
             _Hands.MixDuration = 0;
+            //Debug.Log("Tried To Throw");
 
-        }
-        else if (isHolding == false)
-        {
-            Debug.Log("Tried To Throw");
         }
     }
 

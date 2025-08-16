@@ -1,4 +1,5 @@
 using System;
+using UnityEditor.U2D.Aseprite;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using static AssignmentData;
@@ -32,6 +33,26 @@ public class PlayerCarry : MonoBehaviour
     public void Init(AssignmentType assignmentType)
     {
         _playerType = assignmentType;
+        switch (_playerType)
+        {
+            case AssignmentType.Dev: // Default
+                _controller.SetSkin("Yasha");
+
+                break;
+            case AssignmentType.Art: // Carrying
+                _controller.SetSkin("Beau");
+
+                break;
+            case AssignmentType.Sound: // Processing
+                _controller.SetSkin("Sirius");
+
+                break;
+            default:
+                _controller.SetSkin("Yasha");
+
+                break;
+
+        }
     }
     private void Update()
     {
@@ -133,6 +154,8 @@ public class PlayerCarry : MonoBehaviour
                 throwable.Throw(GetComponent<CoopPlayerController>().ThrowDirection, _throwForce);
                 Debug.Log($"<color=green>Throwing {_carryable} in direction {_aimThrowInput} with force {_throwForce}</color>");
                 _isCarrying = false;
+
+                _controller.ToggleHoldItem(_isCarrying);
                 player.InputLocked = false;
             }
         
