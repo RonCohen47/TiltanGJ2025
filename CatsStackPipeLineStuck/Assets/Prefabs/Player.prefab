@@ -560,7 +560,7 @@ MonoBehaviour:
   _controller: {fileID: 7541796653114488979}
   _circleRenderer: {fileID: 1387539809389836022}
   _throwForce: 6
-  _pickupRadius: 1.24
+  _pickupRadius: 1
   _stationDetectionRadius: 0.8
   _carryableMask:
     serializedVersion: 2
@@ -923,7 +923,7 @@ Canvas:
   m_AdditionalShaderChannelsFlag: 0
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 383
   m_TargetDisplay: 0
 --- !u!114 &1711688002617659846
 MonoBehaviour:
